@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('User', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->string('texName');
-            $table->boolean('boolStatus');
-            $table->string('password')->nullable();
-            $table->rememberToken();
+        Schema::create('PaymentDetail', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->date('datDate');
+            $table->smallInteger('numPaid', $autoIncrement=false, $unsigned=false);
+            $table->boolean('boolDeposited');
+            $table->date('datDepositedDate');
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('User');
+        Schema::dropIfExists('PaymentDetail');
     }
 };

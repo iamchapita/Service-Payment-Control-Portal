@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('User', function (Blueprint $table) {
+        Schema::create('Service', function (Blueprint $table) {
             $table->smallIncrements('id');
-            $table->string('texName');
-            $table->boolean('boolStatus');
-            $table->string('password')->nullable();
-            $table->rememberToken();
+            $table->string('texName', 25)->unique();
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('User');
+        Schema::dropIfExists('Service');
     }
 };

@@ -17,9 +17,6 @@ return new class extends Migration
         Schema::table('PaymentDetail', function (Blueprint $table) {
 
             // Setting ForeignKeys
-            $table->smallInteger('idUserFK')->unsigned();
-            $table->smallInteger('idServiceFK')->unsigned();
-            $table->smallInteger('idMonthFK')->unsigned();
             $table->foreign('idUserFK')->references('id')->on('User');
             $table->foreign('idServiceFK')->references('id')->on('Service');
             $table->foreign('idMonthFK')->references('id')->on('Month');

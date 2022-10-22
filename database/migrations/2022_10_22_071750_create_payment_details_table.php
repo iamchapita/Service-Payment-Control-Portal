@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('PaymentDetail', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('datDate');
+            $table->smallInteger('idUserFK')->unsigned();
+            $table->smallInteger('idServiceFK')->unsigned();
+            $table->smallInteger('idMonthFK')->unsigned();
             $table->smallInteger('numPaid', $autoIncrement=false, $unsigned=false);
+            $table->date('datDate');
             $table->boolean('boolDeposited');
             $table->date('datDepositedDate');
         });

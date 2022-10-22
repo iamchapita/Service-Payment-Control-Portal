@@ -15,8 +15,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $fields['values'] = DB::select('select * from Service order by ? desc', ['id']);
-
+        $fields['values'] = DB::select('SELECT * FROM Service ORDER BY id ASC');
+        $fields['view'] = 'Service';
         return view('Service.index', $fields);
     }
 

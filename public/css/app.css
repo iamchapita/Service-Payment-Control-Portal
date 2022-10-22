@@ -1,0 +1,19 @@
+.container {
+    margin-top: 10%;
+}
+
+table {
+    text-align: center;
+}
+
+.card-body {
+    color: white;
+}
+
+.card {
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.row {
+    margin: auto;
+}

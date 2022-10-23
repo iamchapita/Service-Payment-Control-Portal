@@ -15,9 +15,12 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $fields['values'] = DB::select('SELECT * FROM Service ORDER BY id ASC');
-        $fields['view'] = 'Service';
-        return view('Service.index', $fields);
+        $data['values'] = DB::select('SELECT * FROM Service ORDER BY id ASC');
+        $data['current'] = 'Service';
+        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
+
+        return view('Service.index', $data);
     }
 
     /**

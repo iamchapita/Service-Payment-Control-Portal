@@ -15,8 +15,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $fields['values'] = DB::select('SELECT id, texName, boolStatus FROM User ORDER BY boolStatus DESC');
-        $fields['view'] = 'User';
+        $data['values'] = DB::select('SELECT id, texName, boolStatus FROM User ORDER BY boolStatus DESC');
+        $data['current'] = 'User';
+        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
+
         return view('User.index', $fields);
     }
 }

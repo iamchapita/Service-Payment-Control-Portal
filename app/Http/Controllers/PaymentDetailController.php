@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PaymentDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaymentDetailController extends Controller
 {
@@ -14,7 +15,16 @@ class PaymentDetailController extends Controller
      */
     public function index()
     {
-        //
+        // Estableciendo la consulta para mostrar valores en lugar de llaves foraneas
+        $query = 'SELECT(select User.texName from User where User.id = PaymentDetail.idUserFK) AS Usuario,(select Service.texName from Service where Service.id = PaymentDetail.idServiceFK) AS  Servicio, (select Month.texName from Month where Month.id = PaymentDetail.idMonthFK) AS  Mes, PaymentDetail.datDate AS Fecha, PaymentDetail.numPaid AS Pago, PaymentDetail.boolDeposited AS Estado, PaymentDetail.datDepositedDate AS FechaDeposito FROM (PaymentDetail join (select User.id AS id from User where User.boolStatus = 1) UserInner on (PaymentDetail.idUserFK = UserInner.id)) ORDER BY PaymentDetail.idMonthFK ASC';
+
+        // Variable de envio de datos a renderizar en la vista
+        $data['values'] = DB::select($query);
+        $data['current'] = 'PaymentDetail';
+        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
+
+        return view('PaymentDetail.index', $data);
     }
 
     /**

@@ -1,7 +1,8 @@
 @include('navbar')
 <div class='container'>
+    <h1>Tabla de Usuarios</h1>
     <table class="table table-bordered table-ligth table-striped">
-        <thead  class="table-dark">
+        <thead class="table-dark">
             <tr>
                 <th>#</th>
                 <th>Nombre</th>

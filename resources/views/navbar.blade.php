@@ -25,7 +25,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 @foreach ( $views as $view )
-                @if ( $view == $view )
+                @if ( $view == $current )
                 <li class="nav-view">
                     <a class="nav-link active" aria-current="page" href="#">{{ $view }}</a>
                 </li>
@@ -42,9 +42,11 @@
                         Detalle de PaymentDetail
                     </a>
                     <ul class="dropdown-menu">
-                        @foreach ( $elementsDropdown as $element )
-                        <li><a class="dropdown-item" href="#">{{ $element }}</a></li>
-                        @endforeach
+
+                        @for ($i=0; $i<3; $i++)
+                        <li><a class="dropdown-item" href="{{ route( $elementsDropdownLinks[$i] ) }}">{{ $elementsDropdown[$i] }}</a></li>
+                        @endfor
+
                     </ul>
                 </li>
                 @endisset

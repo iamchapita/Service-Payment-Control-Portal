@@ -16,10 +16,10 @@ class ServiceController extends Controller
     public function index()
     {
         $data['values'] = DB::select('SELECT * FROM Service ORDER BY id ASC');
-        $data['current'] = 'Service';
+        $data['currentView'] = 'Service';
         $data['views'] = array('PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('/PaymentDetail/SpotifyDetail', '/PaymentDetail/NetflixDetail', '/PaymentDetail/DisneyDetail');
+        $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
+        $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
 
         return view('Service.index', $data);
     }

@@ -23,8 +23,37 @@ class PaymentDetailController extends Controller
         $data['current'] = 'PaymentDetail';
         $data['views'] = array('PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
+        $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
 
         return view('PaymentDetail.index', $data);
+    }
+
+    /**
+     * Display a listing of SpotifyDetail only.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function spotifyDetail()
+    {
+        return view('PaymentDetail.SpotifyDetail.index');
+    }
+    /**
+     * Display a listing of SpotifyDetail only.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function netflixDetail()
+    {
+        return view('PaymentDetail.NetflixDetail.index');
+    }
+    /**
+     * Display a listing of SpotifyDetail only.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function disneyDetail()
+    {
+        return view('PaymentDetail.DisneyDetail.index');
     }
 
     /**

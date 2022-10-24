@@ -20,7 +20,7 @@ class PaymentDetailController extends Controller
 
         // Variable de envio de datos a renderizar en la vista
         $data['values'] = DB::select($query);
-        $data['current'] = 'PaymentDetail';
+        $data['currentView'] = 'PaymentDetail';
         $data['views'] = array('PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
         $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
@@ -35,7 +35,17 @@ class PaymentDetailController extends Controller
      */
     public function spotifyDetail()
     {
-        return view('PaymentDetail.SpotifyDetail.index');
+        // Estableciendo la consulta para mostrar valores en lugar de llaves foraneas
+        $query = 'SELECT( select User.texName from User where User.id = PaymentDetail.idUserFK ) AS Usuario, ( select Service.texName from Service where Service.id = PaymentDetail.idServiceFK ) AS Servicio, ( select Month.texName from Month where Month.id = PaymentDetail.idMonthFK ) AS Mes, PaymentDetail.datDate AS Fecha, PaymentDetail.numPaid AS Pago, PaymentDetail.boolDeposited AS Estado, PaymentDetail.datDepositedDate AS FechaDeposito FROM ( PaymentDetail join ( select User.id AS id from User where User.boolStatus = 1 ) UserInner on ( PaymentDetail.idUserFK = UserInner.id ) ) WHERE PaymentDetail.idServiceFK = 1 AND YEAR(PaymentDetail.datDate) = YEAR(CURRENT_TIMESTAMP()) ORDER BY PaymentDetail.idMonthFK ASC';
+
+        // Variable de envio de datos a renderizar en la vista
+        $data['values'] = DB::select($query);
+        $data['currentView'] = 'Histórico Spotify';
+        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
+        $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
+
+        return view('PaymentDetail.SpotifyDetail.index', $data);
     }
     /**
      * Display a listing of SpotifyDetail only.

@@ -54,7 +54,17 @@ class PaymentDetailController extends Controller
      */
     public function netflixDetail()
     {
-        return view('PaymentDetail.NetflixDetail.index');
+        // Estableciendo la consulta para mostrar valores en lugar de llaves foraneas
+        $query = 'SELECT( select User.texName from User where User.id = PaymentDetail.idUserFK ) AS Usuario, ( select Service.texName from Service where Service.id = PaymentDetail.idServiceFK ) AS Servicio, ( select Month.texName from Month where Month.id = PaymentDetail.idMonthFK ) AS Mes, PaymentDetail.datDate AS Fecha, PaymentDetail.numPaid AS Pago, PaymentDetail.boolDeposited AS Estado, PaymentDetail.datDepositedDate AS FechaDeposito FROM ( PaymentDetail join ( select User.id AS id from User where User.boolStatus = 1 ) UserInner on ( PaymentDetail.idUserFK = UserInner.id ) ) WHERE PaymentDetail.idServiceFK = 2 AND YEAR(PaymentDetail.datDate) = YEAR(CURRENT_TIMESTAMP()) ORDER BY PaymentDetail.idMonthFK ASC';
+
+        // Variable de envio de datos a renderizar en la vista
+        $data['values'] = DB::select($query);
+        $data['currentView'] = 'Histórico Netflix';
+        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
+        $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
+
+        return view('PaymentDetail.NetflixDetail.index', $data);
     }
     /**
      * Display a listing of SpotifyDetail only.
@@ -63,7 +73,17 @@ class PaymentDetailController extends Controller
      */
     public function disneyDetail()
     {
-        return view('PaymentDetail.DisneyDetail.index');
+        // Estableciendo la consulta para mostrar valores en lugar de llaves foraneas
+        $query = 'SELECT( select User.texName from User where User.id = PaymentDetail.idUserFK ) AS Usuario, ( select Service.texName from Service where Service.id = PaymentDetail.idServiceFK ) AS Servicio, ( select Month.texName from Month where Month.id = PaymentDetail.idMonthFK ) AS Mes, PaymentDetail.datDate AS Fecha, PaymentDetail.numPaid AS Pago, PaymentDetail.boolDeposited AS Estado, PaymentDetail.datDepositedDate AS FechaDeposito FROM ( PaymentDetail join ( select User.id AS id from User where User.boolStatus = 1 ) UserInner on ( PaymentDetail.idUserFK = UserInner.id ) ) WHERE PaymentDetail.idServiceFK = 3 AND YEAR(PaymentDetail.datDate) = YEAR(CURRENT_TIMESTAMP()) ORDER BY PaymentDetail.idMonthFK ASC';
+
+        // Variable de envio de datos a renderizar en la vista
+        $data['values'] = DB::select($query);
+        $data['currentView'] = 'Histórico Disney+';
+        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
+        $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
+
+        return view('PaymentDetail.DisneyDetail.index', $data);
     }
 
     /**

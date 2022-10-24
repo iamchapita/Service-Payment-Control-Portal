@@ -1,14 +1,14 @@
 @include('navbar')
 <div class='container'>
-    <h1>Historico de Pago General</h1>
+    <h1>Histórico de Pago General</h1>
     <table class="table table-bordered table-ligth table-striped">
         <thead class="table-dark">
             <tr>
                 <th>Usuario</th>
                 <th>Servicio</th>
                 <th>Mes</th>
-                <th>Pago</th>
                 <th>Fecha de Pago</th>
+                <th>Pago</th>
                 <th>Estado de Deposito</th>
                 <th>Fecha de Deposito</th>
             </tr>

@@ -3,7 +3,6 @@
 use App\Http\Controllers\PaymentDetailController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
-use App\Models\Service;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('Service', ServiceController::class);
 Route::resource('User', UserController::class);
-Route::resource('PaymentDetail', PaymentDetailController::class);
+// Route::resource('PaymentDetail', PaymentDetailController::class);
+
+// Rutas Personalizadas
+Route::prefix('/PaymentDetail')->group( function () {
+    Route::get('/', [PaymentDetailController::class, 'index']);
+    Route::get('/SpotifyDetail', [PaymentDetailController::class, 'spotifyDetail'])->name('spotifyDetail');
+    Route::get('/NetflixyDetail', [PaymentDetailController::class, 'netflixDetail'])->name('netflixDetail');
+    Route::get('/DisneyDetail', [PaymentDetailController::class, 'disneyDetail'])->name('disneyDetail');
+});

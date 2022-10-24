@@ -1,1 +1,2 @@
-@include('navbar')
+
+<p>Hola</p>

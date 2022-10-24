@@ -4,6 +4,7 @@
     <table class="table table-bordered table-ligth table-striped">
         <thead class="table-dark">
             <tr>
+                <th>#</th>
                 <th>Usuario</th>
                 <th>Servicio</th>
                 <th>Mes</th>
@@ -17,6 +18,7 @@
         <tbody>
             @foreach ( $values as $value )
             <tr>
+                <td>{{ $value->id }}</td>
                 <td>{{ $value->Usuario }}</td>
                 <td>{{ $value->Servicio }}</td>
                 <td>{{ $value->Mes }}</td>

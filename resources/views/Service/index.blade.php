@@ -1,6 +1,6 @@
 @include('navbar')
 <div class='container'>
-    <h1>Tabla de Servicios</h1>
+    <h1>{{ $currentView }}</h1>
     <table class="table table-bordered table-ligth table-striped">
         <thead class="table-dark">
             <tr>

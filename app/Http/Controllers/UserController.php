@@ -18,8 +18,8 @@ class UserController extends Controller
         $data['values'] = DB::select('SELECT id, texName, boolStatus FROM User ORDER BY boolStatus DESC');
         $data['current'] = 'User';
         $data['views'] = array('PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');$data['elementsDropdownLinks'] = array('PaymentDetail/SpotifyDetail', 'PaymentDetail/NetflixDetail', 'PaymentDetail/DisneyDetail');
 
-        return view('User.index', $fields);
+        return view('User.index', $data);
     }
 }

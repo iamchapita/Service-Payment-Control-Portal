@@ -19,6 +19,7 @@ class ServiceController extends Controller
         $data['current'] = 'Service';
         $data['views'] = array('PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
+        $data['elementsDropdownLinks'] = array('/PaymentDetail/SpotifyDetail', '/PaymentDetail/NetflixDetail', '/PaymentDetail/DisneyDetail');
 
         return view('Service.index', $data);
     }

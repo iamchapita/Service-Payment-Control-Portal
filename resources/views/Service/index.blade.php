@@ -1,7 +1,7 @@
 @include('navbar')
 <div class='container'>
-    <h1>{{ $currentView }}</h1>
-    <table class="table table-bordered table-ligth table-striped">
+    @include('filterAndTitle')
+    <table class="table table-bordered table-ligth table-striped" id="table">
         <thead class="table-dark">
             <tr>
                 <th>#</th>

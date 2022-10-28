@@ -18,3 +18,9 @@ table {
 .row {
     margin: auto;
 }
+
+.filterAndTitle{
+    display: grid;
+    grid-auto-flow: column;
+
+}

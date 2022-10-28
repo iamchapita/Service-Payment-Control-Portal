@@ -12,6 +12,7 @@
     <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <script src="{{asset('js/filter.js')}}"></script>
 
 </head>
 

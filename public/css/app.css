@@ -1,3 +1,9 @@
+#cardContainer {
+    margin-top: 5%;
+    display: grid;
+    grid-auto-flow: column;
+}
+
 .container {
     margin-top: 10%;
     margin-bottom: 10%;
@@ -7,12 +13,12 @@ table {
     text-align: center;
 }
 
-.card-body {
-    color: white;
-}
-
 .card {
-    border-color: rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    border-color: rgb(155, 155, 155);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
 }
 
 .row {

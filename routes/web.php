@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('Service', ServiceController::class);
 Route::resource('User', UserController::class);
-// Route::resource('PaymentDetail', PaymentDetailController::class);
+Route::get('/', function() {
+    return view('FirstScreen.index');
+});
 
 // Rutas Personalizadas
 Route::prefix('/PaymentDetail')->group( function () {

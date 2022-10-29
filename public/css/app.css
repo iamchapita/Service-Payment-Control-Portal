@@ -28,5 +28,8 @@ table {
 .filterAndTitle{
     display: grid;
     grid-auto-flow: column;
+}
 
+select:required:invalid{
+    border-color: red;
 }

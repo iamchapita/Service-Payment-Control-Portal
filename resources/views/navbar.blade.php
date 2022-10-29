@@ -7,7 +7,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+                <li class="nav-view">
+                    <a class="nav-link" href="{{ route('home') }}">Inicio</a>
+                </li>
                 @foreach ( $views as $view )
                 @if ( $view == $currentView )
                 <li class="nav-view">
@@ -27,19 +29,16 @@
                     </a>
                     <ul class="dropdown-menu">
 
-                        @for ($i=0; $i<3; $i++)
-                        <li><a class="dropdown-item" href="{{ route( $elementsDropdownLinks[$i] ) }}">{{ $elementsDropdown[$i] }}</a></li>
-                        @endfor
-
-                    </ul>
+                        @for ($i=0; $i<3; $i++) <li><a class="dropdown-item" href="{{ route( $elementsDropdownLinks[$i] ) }}">{{ $elementsDropdown[$i] }}</a>
                 </li>
-                @endisset
+                @endfor
 
-                <li class="nav-view">
-                    <a class="nav-link disabled">Disabled</a>
-                </li>
-
-
+            </ul>
+            </li>
+            @endisset
+            <li class="nav-view">
+                <a class="nav-link">Login</a>
+            </li>
             </ul>
         </div>
     </div>

@@ -24,7 +24,7 @@ Route::get('/', function() {
 
 // Rutas Personalizadas
 Route::prefix('/PaymentDetail')->group( function () {
-    Route::get('/', [PaymentDetailController::class, 'index']);
+    Route::get('/', [PaymentDetailController::class, 'index'])->name('historicalDetail');
     Route::get('/SpotifyDetail', [PaymentDetailController::class, 'spotifyDetail'])->name('spotifyDetail');
     Route::get('/NetflixyDetail', [PaymentDetailController::class, 'netflixDetail'])->name('netflixDetail');
     Route::get('/DisneyDetail', [PaymentDetailController::class, 'disneyDetail'])->name('disneyDetail');

@@ -1,3 +1,10 @@
+// -*- coding: utf-8 -*-
+/*
+@author: lamorales@unah.hn || alejandrom646@gmail.com ||iamchapita
+@date: 2022/10/29
+@version: 0.1.0
+*/
+
 function searchFilter() {
     // Se declaran las variables utilizadas para el proceso de filtrado
     var input, filter, table, tr, td, i, textValue;

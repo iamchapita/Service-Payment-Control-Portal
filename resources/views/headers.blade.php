@@ -12,5 +12,6 @@
 
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <script src="{{asset('js/filter.js')}}"></script>
+    <script src="{{asset('js/clearSelect.js')}}"></script>
 
 </head>

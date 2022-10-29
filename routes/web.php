@@ -20,7 +20,7 @@ Route::resource('Service', ServiceController::class);
 Route::resource('User', UserController::class);
 Route::get('/', function() {
     return view('FirstScreen.index');
-});
+})->name('home');
 
 // Rutas Personalizadas
 Route::prefix('/PaymentDetail')->group( function () {

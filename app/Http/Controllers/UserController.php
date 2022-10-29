@@ -23,4 +23,11 @@ class UserController extends Controller
 
         return view('User.index', $data);
     }
+
+    public function usersList()
+    {
+        $data['values'] = DB::select('SELECT id, texName FROM User WHERE boolStatus = 1');
+
+        return view('FirstScreen.index', $data);
+    }
 }

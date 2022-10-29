@@ -16,11 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Rutas agrupadas
 Route::resource('Service', ServiceController::class);
 Route::resource('User', UserController::class);
-Route::get('/', function() {
-    return view('FirstScreen.index');
-})->name('home');
+
+// Rutas individuales
+Route::get('/', [UserController::class, 'usersList'])->name('home');
 
 // Rutas Personalizadas
 Route::prefix('/PaymentDetail')->group( function () {

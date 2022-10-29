@@ -26,7 +26,7 @@ class UserController extends Controller
 
     public function usersList()
     {
-        $data['values'] = DB::select('SELECT id, texName FROM User WHERE boolStatus = 1');
+        $data['values'] = DB::select('SELECT id, texName FROM User WHERE boolStatus = 1 AND boolAdminStatus = 0');
 
         return view('FirstScreen.index', $data);
     }

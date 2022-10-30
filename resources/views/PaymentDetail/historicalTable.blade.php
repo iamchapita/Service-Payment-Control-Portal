@@ -9,10 +9,10 @@
                     <th>Usuario</th>
                     <th>Servicio</th>
                     <th>Mes</th>
-                    <th>Pago</th>
+                    <th>Fecha Pago</th>
                     <th>Cuota</th>
-                    <th>Deposito</th>
-                    <th>Deposito</th>
+                    <th>Estado de Deposito</th>
+                    <th>Fecha de Deposito</th>
                 </tr>
             </thead>
 

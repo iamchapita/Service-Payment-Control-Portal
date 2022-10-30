@@ -10,18 +10,19 @@
                 <li class="nav-view">
                     <a class="nav-link" href="{{ route('home') }}">Inicio</a>
                 </li>
-                @foreach ( $views as $view )
-                @if ( $view == $currentView )
-                <li class="nav-view">
-                    <a class="nav-link active" aria-currentView="page" href="#">{{ $view }}</a>
-                </li>
-                @else
-                <li class="nav-view">
-                    <a class="nav-link" href="{{ url( $view ) }}">{{ $view }}</a>
-                </li>
-                @endif
-                @endforeach
-
+                @isset( $views )
+                    @foreach ( $views as $view )
+                    @if ( $view == $currentView )
+                    <li class="nav-view">
+                        <a class="nav-link active" aria-currentView="page" href="#">{{ $view }}</a>
+                    </li>
+                    @else
+                    <li class="nav-view">
+                        <a class="nav-link" href="{{ url( $view ) }}">{{ $view }}</a>
+                    </li>
+                    @endif
+                    @endforeach
+                @endisset
                 @isset( $elementsDropdown )
                 <li class="nav-view dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

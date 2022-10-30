@@ -21,7 +21,7 @@ return new class extends Migration
             $table->smallInteger('numPaid', $autoIncrement=false, $unsigned=false);
             $table->date('datDate');
             $table->boolean('boolDeposited');
-            $table->date('datDepositedDate');
+            $table->date('datDepositedDate')->nullable();
         });
     }
 

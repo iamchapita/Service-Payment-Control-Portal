@@ -17,6 +17,7 @@ return new class extends Migration
             $table->smallIncrements('id');
             $table->string('texName');
             $table->boolean('boolStatus');
+            $table->boolean('boolAdminStatus')->default(0);
             $table->string('password')->nullable();
             $table->rememberToken();
         });

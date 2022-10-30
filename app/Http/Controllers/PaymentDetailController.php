@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PaymentDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class PaymentDetailController extends Controller
 {
@@ -67,10 +68,10 @@ class PaymentDetailController extends Controller
         return view('PaymentDetail.historicalTable', $data);
     }
     /**
-     * Display a listing of SpotifyDetail only.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * Display a listing of SpotifyDetail only.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function disneyDetail()
     {
         // Estableciendo la consulta para mostrar valores en lugar de llaves foraneas
@@ -86,6 +87,26 @@ class PaymentDetailController extends Controller
         return view('PaymentDetail.historicalTable', $data);
     }
 
+    /**
+    * Display a list of payments of user.
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+    public function userDetail(Request $request){
+
+        // Obtiene el id del Usuario, obtenido desde el select
+        $id = $request->userSelect;
+
+        $query = 'SELECT(select User.texName from User where User.id = PaymentDetail.idUserFK) AS Usuario, ( select Service.texName from Service where Service.id = PaymentDetail.idServiceFK ) AS Servicio, ( select Month.texName from Month where Month.id = PaymentDetail.idMonthFK ) AS Mes, PaymentDetail.datDate AS Fecha, PaymentDetail.numPaid AS Pago FROM ( PaymentDetail join ( select User.id AS id from User where User.boolStatus = 1 ) UserInner on ( PaymentDetail.idUserFK = UserInner.id ) ) WHERE UserInner.id = X AND YEAR(PaymentDetail.datDate) = YEAR(CURRENT_TIMESTAMP())';
+
+        // Reemplaza la X en la query por el id del usuario
+        $query = Str::replace('X', $id, $query);
+
+        $data['values'] = DB::select($query);
+        $data['currentView'] = 'Histórico de Pago';
+
+        return view('PaymentDetail.userDetailTable', $data);
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -31,5 +31,5 @@ Route::prefix('/PaymentDetail')->group( function () {
     Route::get('/DisneyDetail', [PaymentDetailController::class, 'disneyDetail'])->name('disneyDetail');
     Route::get('/create', [PaymentDetailController::class, 'create'])->name('createPaymentDetail');
     Route::post('/UserDetail', [PaymentDetailController::class, 'userDetail'])->name('userDetail');
-
+    Route::post('/insert', [PaymentDetailController::class, 'store'])->name('insertPaymentDetail');
 });

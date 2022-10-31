@@ -4,13 +4,26 @@
     grid-auto-flow: column;
 }
 
+#filterAndButton {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+#searchInput {
+    margin-right: 10px;
+    max-width: 350px;
+    height: 35px;
+}
+
+.btn-secondary {
+    margin-left: auto;
+    width: 100px;
+    height: 35px;
+}
+
 .container {
     margin-top: 10%;
     margin-bottom: 10%;
-}
-
-table {
-    text-align: center;
 }
 
 .card {
@@ -25,11 +38,10 @@ table {
     margin: auto;
 }
 
-.filterAndTitle{
-    display: grid;
-    grid-auto-flow: column;
+table {
+    text-align: center;
 }
 
-select:required:invalid{
+select:required:invalid {
     border-color: red;
 }

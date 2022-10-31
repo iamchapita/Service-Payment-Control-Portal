@@ -1,5 +1,7 @@
 @include('navbar')
 <div class="container">
+    <h1>Insertar Nuevo Registro en PaymentDetail</h1>
+    <br>
     <form method="POST" action="{{ route('insertPaymentDetail') }}" enctype="multipart/form-data">
         @csrf
         <div class="input-group mb-3">

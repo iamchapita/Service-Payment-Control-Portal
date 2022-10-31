@@ -5,6 +5,8 @@
 @version: 0.1.0
 */
 
+// Obtiene el select de estado de deposito y segun su valor establece
+// la propiedad required a la fecha de deposito
 function checkDepositeStatus() {
 
     var select = document.getElementById('depositeStatus');

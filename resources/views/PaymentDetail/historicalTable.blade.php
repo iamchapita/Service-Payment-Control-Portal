@@ -27,7 +27,7 @@
                     <td>{{ $value->Pago }}</td>
                     <td>
                         @if ( $value->Estado == 0 )
-                        Sin Depóosito
+                        Pendiente
                         @else
                         Depósito Realizado
                         @endif

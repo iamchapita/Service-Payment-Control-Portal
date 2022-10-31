@@ -38,10 +38,18 @@
     margin: auto;
 }
 
+.submitButton{
+    float: right;
+}
+
 table {
     text-align: center;
 }
 
 select:required:invalid {
+    border-color: red;
+}
+
+input:required:invalid {
     border-color: red;
 }

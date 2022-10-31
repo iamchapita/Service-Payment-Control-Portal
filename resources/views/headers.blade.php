@@ -14,4 +14,6 @@
     <script src="{{asset('js/filter.js')}}"></script>
     <script src="{{asset('js/clearSelect.js')}}"></script>
     <script src="{{asset('js/checkField.js')}}"></script>
+
+    <title>Sistema de Control de Pagos</title>
 </head>

@@ -1,6 +1,6 @@
 @include('navbar')
 <div class='container'>
-    @include('filterAndTitle')
+    @include('filterAndButton')
     <div class="table-responsive">
         <table class="table table-bordered table-ligth table-hover" id="table">
             <thead class="table-dark">

@@ -1,6 +1,6 @@
 @include('navbar')
 <div class='container'>
-    @include('filterAndTitle')
+    @include('filterAndButton')
     <div class="table-responsive">
         <table class="table table-bordered table-ligth table-hover" id="table">
             <thead class="table-dark">
@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach ( $values as $value )
+                @foreach ( $values as $value )
                 <tr>
                     <td>{{ $value->Usuario }}</td>
                     <td>{{ $value->Servicio }}</td>

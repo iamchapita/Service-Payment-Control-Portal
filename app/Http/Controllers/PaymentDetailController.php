@@ -129,15 +129,17 @@ class PaymentDetailController extends Controller
         $data['views'] = array('PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
         $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
-        $data['insertURL'] = 'createPaymentDetail';
+        $data['formURL'] = 'insertPaymentDetail';
+        $data['title'] = 'Insertar Nuevo Registro en PaymentDetail';
 
         // Datos para los campos del form
         $data['users'] = DB::select('SELECT id, texName FROM User WHERE boolStatus = ? AND boolAdminStatus = ?', [1, 0]);
         $data['services'] = DB::select('SELECT id, texName FROM Service');
         $data['months'] = DB::select('SELECT id, texName FROM Month ORDER BY id');
         $data['depositState'] = array('Pendiente', 'Depósito Realizado');
+        $data['action'] = 'Insertar';
 
-        return view('InsertForms.paymentDetailForm', $data);
+        return view('PaymentDetail.headerForm', $data);
     }
 
     /**
@@ -183,9 +185,27 @@ class PaymentDetailController extends Controller
      * @param  \App\Models\PaymentDetail  $paymentDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(PaymentDetail $paymentDetail)
+    public function edit(int $id)
     {
-        //
+        // Estableciendo variables que se retornaran a la vista
+        $data['currentView'] = 'Editar PaymentDetail';
+        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
+        $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
+        $data['title'] = 'Editar Registro en PaymentDetail';
+        // Obteniendo la informacion a editar
+        $data['values'] = DB::select('SELECT * FROM PaymentDetail WHERE id = ?', [$id]);
+        // Obteniendo la informacion de los select
+        $data['users'] = DB::select('SELECT id, texName FROM User WHERE boolStatus = ? AND boolAdminStatus = ?', [1, 0]);
+        $data['services'] = DB::select('SELECT id, texName FROM Service');
+        $data['months'] = DB::select('SELECT id, texName FROM Month ORDER BY id');
+        $data['depositState'] = array('Pendiente', 'Depósito Realizado');
+        // Estableciendo que ruta tendra el form
+        $data['formURL'] = 'updatePaymentDetail';
+        // Estableciendo el nombre del boton que tendra el form
+        $data['action'] = 'Editar';
+
+        return view('PaymentDetail.headerForm', $data);
     }
 
     /**
@@ -195,9 +215,22 @@ class PaymentDetailController extends Controller
      * @param  \App\Models\PaymentDetail  $paymentDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PaymentDetail $paymentDetail)
+    public function update(Request $request, int $id)
     {
-        //
+        // Exclusion de campo _token
+        $values = $request-> except(['_token', '_method']);
+        // Desempaquetado de variables para introduccion en consulta sql
+        $idUserFK = $values['userInput'];
+        $idServiceFK = $values['serviceInput'];
+        $idMonthFK = $values['monthInput'];
+        $numPaid = $values['moneyAmountInput'];
+        $datDate = $values['payDateInput'];
+        $boolDeposited = $values['depositStatus'];
+        $datDepositedDate = $values['depositDateInput'];
+
+        DB::update('UPDATE PaymentDetail SET idUserFK = ?, idServiceFK = ?, idMonthFK = ?, numPaid = ?, datDate = ?, boolDeposited = ?, datDepositedDate = ? WHERE id = ?', [$idUserFK, $idServiceFK ,$idMonthFK, $numPaid, $datDate, $boolDeposited, $datDepositedDate, $id]);
+
+        return redirect() -> route('historicalDetail');
     }
 
     /**

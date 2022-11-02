@@ -148,7 +148,21 @@ class PaymentDetailController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        // Exclusion de campo _token
+        $values = $request-> except('_token');
+        // Desempaquetado de variables para introduccion en consulta sql
+        $idUserFK = $values['userInput'];
+        $idServiceFK = $values['serviceInput'];
+        $idMonthFK = $values['monthInput'];
+        $numPaid = $values['moneyAmountInput'];
+        $datDate = $values['payDateInput'];
+        $boolDeposited = $values['depositStatus'];
+        $datDepositedDate = $values['depositDateInput'];
+
+        DB::insert('INSERT INTO PaymentDetail (idUserFK, idServiceFK, idMonthFK, numPaid, datDate, boolDeposited, datDepositedDate) values (?, ?, ? , ?, ?, ?, ?)', [$idUserFK, $idServiceFK, $idMonthFK, $numPaid, $datDate, $boolDeposited, $datDepositedDate]);
+
+        // Se redirecciona a la ruta especificada
+        return redirect() -> route('historicalDetail');
 
     }
 

@@ -30,6 +30,9 @@ Route::prefix('/PaymentDetail')->group( function () {
     Route::get('/NetflixyDetail', [PaymentDetailController::class, 'netflixDetail'])->name('netflixDetail');
     Route::get('/DisneyDetail', [PaymentDetailController::class, 'disneyDetail'])->name('disneyDetail');
     Route::get('/create', [PaymentDetailController::class, 'create'])->name('createPaymentDetail');
+    // Contiene los detalles de pago de servicio personal
     Route::post('/UserDetail', [PaymentDetailController::class, 'userDetail'])->name('userDetail');
     Route::post('/insert', [PaymentDetailController::class, 'store'])->name('insertPaymentDetail');
+    Route::post('/{id}/edit', [PaymentDetailController::class, 'edit'])->name('editPaymentDetail');
+    Route::put('/{id}/update', [PaymentDetailController::class, 'update'])->name('updatePaymentDetail');
 });

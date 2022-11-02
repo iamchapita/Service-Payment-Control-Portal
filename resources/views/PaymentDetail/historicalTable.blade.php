@@ -13,6 +13,8 @@
                     <th>Cuota</th>
                     <th>Estado de Deposito</th>
                     <th>Fecha de Deposito</th>
+                    <th>Editar</th>
+                    <th>Borrar</th>
                 </tr>
             </thead>
 
@@ -33,6 +35,19 @@
                         @endif
                     </td>
                     <td>{{ $value->FechaDeposito }}</td>
+                    <td>
+                        <form method="POST" action="{{ route('editPaymentDetail', $value->id) }}">
+                            @csrf
+                            <button type="submit" class="btn btn-success">Editar</button>
+                        </form>
+                    </td>
+                    <!-- <td>
+                        <form method="POST" action="{{ route('editPaymentDetail', $value->id) }}">
+                            @csrf
+                            @method('GET')
+                            <button type="submit" class="btn btn-danger">Borrar</button>
+                        </form>
+                    </td> -->
                 </tr>
                 @endforeach
             </tbody>

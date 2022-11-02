@@ -13,8 +13,11 @@ function checkDepositeStatus() {
     var date = document.getElementById('depositDateInput');
 
     if (select.value == "1"){
+        date.removeAttribute('disabled');
         date.setAttribute('required', '');
     }else{
+        date.value = '';
+        date.setAttribute('disabled', '');
         date.removeAttribute('required');
     }
 }

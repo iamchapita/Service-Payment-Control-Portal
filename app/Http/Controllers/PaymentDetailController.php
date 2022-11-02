@@ -137,7 +137,7 @@ class PaymentDetailController extends Controller
         $data['months'] = DB::select('SELECT id, texName FROM Month ORDER BY id');
         $data['depositState'] = array('Pendiente', 'Depósito Realizado');
 
-        return view('InsertForms.paymentDetailInsert', $data);
+        return view('InsertForms.paymentDetailForm', $data);
     }
 
     /**

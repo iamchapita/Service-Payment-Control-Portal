@@ -151,7 +151,7 @@ class PaymentDetailController extends Controller
     public function store(Request $request)
     {
         // Exclusion de campo _token
-        $values = $request-> except('_token');
+        $values = $request->except('_token');
         // Desempaquetado de variables para introduccion en consulta sql
         $idUserFK = $values['userInput'];
         $idServiceFK = $values['serviceInput'];
@@ -164,8 +164,7 @@ class PaymentDetailController extends Controller
         DB::insert('INSERT INTO PaymentDetail (idUserFK, idServiceFK, idMonthFK, numPaid, datDate, boolDeposited, datDepositedDate) values (?, ?, ? , ?, ?, ?, ?)', [$idUserFK, $idServiceFK, $idMonthFK, $numPaid, $datDate, $boolDeposited, $datDepositedDate]);
 
         // Se redirecciona a la ruta especificada
-        return redirect() -> route('historicalDetail');
-
+        return redirect()->route('historicalDetail');
     }
 
     /**
@@ -218,7 +217,7 @@ class PaymentDetailController extends Controller
     public function update(Request $request, int $id)
     {
         // Exclusion de campo _token
-        $values = $request-> except(['_token', '_method']);
+        $values = $request->except(['_token', '_method']);
         // Desempaquetado de variables para introduccion en consulta sql
         $idUserFK = $values['userInput'];
         $idServiceFK = $values['serviceInput'];
@@ -226,11 +225,17 @@ class PaymentDetailController extends Controller
         $numPaid = $values['moneyAmountInput'];
         $datDate = $values['payDateInput'];
         $boolDeposited = $values['depositStatus'];
-        $datDepositedDate = $values['depositDateInput'];
+        if (key_exists('depositDateInput', $values)) {
+            $datDepositedDate = $values['depositDateInput'];
+        }else{
+            $datDepositedDate = null;
+        }
 
-        DB::update('UPDATE PaymentDetail SET idUserFK = ?, idServiceFK = ?, idMonthFK = ?, numPaid = ?, datDate = ?, boolDeposited = ?, datDepositedDate = ? WHERE id = ?', [$idUserFK, $idServiceFK ,$idMonthFK, $numPaid, $datDate, $boolDeposited, $datDepositedDate, $id]);
+        DB::update('UPDATE PaymentDetail SET idUserFK = ?, idServiceFK = ?, idMonthFK = ?, numPaid = ?, datDate = ?, boolDeposited = ?, datDepositedDate = ? WHERE id = ?', [$idUserFK, $idServiceFK, $idMonthFK, $numPaid, $datDate, $boolDeposited, $datDepositedDate, $id]);
 
-        return redirect() -> route('historicalDetail');
+
+
+        return redirect()->route('historicalDetail');
     }
 
     /**

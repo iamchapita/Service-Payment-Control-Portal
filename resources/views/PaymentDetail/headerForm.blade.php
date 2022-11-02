@@ -14,6 +14,6 @@
     <form method="POST" action="{{ route($formURL) }}" enctype="multipart/form-data">
     @endif
         @csrf
-        @include('InsertForms.paymentDetailForm')
+        @include('PaymentDetail.paymentDetailForm')
     </form>
 </div>

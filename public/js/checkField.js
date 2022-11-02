@@ -9,8 +9,8 @@
 // la propiedad required a la fecha de deposito
 function checkDepositeStatus() {
 
-    var select = document.getElementById('depositeStatus');
-    var date = document.getElementById('depositeDateInput');
+    var select = document.getElementById('depositStatus');
+    var date = document.getElementById('depositDateInput');
 
     if (select.value == "1"){
         date.setAttribute('required', '');

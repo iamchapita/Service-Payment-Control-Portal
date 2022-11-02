@@ -45,8 +45,8 @@
         </div>
 
         <div class="input-group mb-3">
-            <label class="input-group-text" for="depositeStatus">Estado del Depósito</label>
-            <select class="form-select" name="depositeStatus" id="depositeStatus" required autocomplete="off" onchange="checkDepositeStatus()">
+            <label class="input-group-text" for="depositStatus">Estado del Depósito</label>
+            <select class="form-select" name="depositStatus" id="depositStatus" required autocomplete="off" onchange="checkDepositeStatus()">
                 <option selected value="">Seleccione el Estado</option>
                 <option value="0">Pediente</option>
                 <option value="1">Depósito Realizado</option>
@@ -54,8 +54,8 @@
         </div>
 
         <div class="input-group mb-3">
-            <label class="input-group-text" for="depositeDateInput">Fecha de Depósito</label>
-            <input type="date" class="date form-control" name="depositeDateInput" id="depositeDateInput" autocomplete="off">
+            <label class="input-group-text" for="depositDateInput">Fecha de Depósito</label>
+            <input type="date" class="date form-control" name="depositDateInput" id="depositDateInput" autocomplete="off">
         </div>
 
         <br>

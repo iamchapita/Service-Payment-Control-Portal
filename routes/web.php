@@ -35,4 +35,5 @@ Route::prefix('/PaymentDetail')->group( function () {
     Route::post('/insert', [PaymentDetailController::class, 'store'])->name('insertPaymentDetail');
     Route::post('/{id}/edit', [PaymentDetailController::class, 'edit'])->name('editPaymentDetail');
     Route::put('/{id}/update', [PaymentDetailController::class, 'update'])->name('updatePaymentDetail');
+    Route::delete('/{id}/delete', [PaymentDetailController::class, 'destroy'])->name('destroyPaymentDetail');
 });

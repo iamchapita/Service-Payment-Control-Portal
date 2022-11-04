@@ -152,6 +152,7 @@ class PaymentDetailController extends Controller
     {
         // Exclusion de campo _token
         $values = $request->except('_token');
+
         // Desempaquetado de variables para introduccion en consulta sql
         $idUserFK = $values['userInput'];
         $idServiceFK = $values['serviceInput'];
@@ -159,7 +160,13 @@ class PaymentDetailController extends Controller
         $numPaid = $values['moneyAmountInput'];
         $datDate = $values['payDateInput'];
         $boolDeposited = $values['depositStatus'];
-        $datDepositedDate = $values['depositDateInput'];
+
+        // Comprobando que la fecha de Depósito se ingreso o no
+        if(key_exists('depositDateInput', $values)){
+            $datDepositedDate = $values['depositDateInput'];
+        }else{
+            $datDepositedDate = null;
+        }
 
         DB::insert('INSERT INTO PaymentDetail (idUserFK, idServiceFK, idMonthFK, numPaid, datDate, boolDeposited, datDepositedDate) values (?, ?, ? , ?, ?, ?, ?)', [$idUserFK, $idServiceFK, $idMonthFK, $numPaid, $datDate, $boolDeposited, $datDepositedDate]);
 
@@ -244,8 +251,10 @@ class PaymentDetailController extends Controller
      * @param  \App\Models\PaymentDetail  $paymentDetail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PaymentDetail $paymentDetail)
+    public function destroy(int $id)
     {
-        //
+        DB::delete('DELETE FROM PaymentDetail WHERE id = ?', [$id]);
+
+        return redirect()->route('historicalDetail');
     }
 }

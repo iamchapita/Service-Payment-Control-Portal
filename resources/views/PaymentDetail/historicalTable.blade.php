@@ -41,13 +41,13 @@
                             <button type="submit" class="btn btn-success">Editar</button>
                         </form>
                     </td>
-                    <!-- <td>
-                        <form method="POST" action="{{ route('editPaymentDetail', $value->id) }}">
+                    <td>
+                        <form method="POST" action="{{ route('destroyPaymentDetail', $value->id) }}">
                             @csrf
-                            @method('GET')
-                            <button type="submit" class="btn btn-danger">Borrar</button>
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Desea borrar este registro?')">Borrar</button>
                         </form>
-                    </td> -->
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

@@ -4,5 +4,7 @@
     <div class="input-group mb-3">
         <input type="text" class="form-control" id="searchInput" autocomplete="off" onkeyup="searchFilter()" placeholder="Filtrar" aria-label="Search" aria-describedby="basic-addon1">
     </div>
+    @isset($insertURL)
     <button id="insertButton" type="button" class="btn btn-secondary" onclick="location.href='{{ route($insertURL) }}'">Insertar</button>
+    @endisset
 </div>

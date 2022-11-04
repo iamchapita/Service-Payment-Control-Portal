@@ -15,6 +15,10 @@
     height: 35px;
 }
 
+#insertButton {
+    margin-left: auto;
+}
+
 .btn-secondary, .btn-dark {
     width: 100px;
     height: 35px;

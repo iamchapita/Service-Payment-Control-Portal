@@ -19,6 +19,17 @@
     margin-left: auto;
 }
 
+.loginRegistrationForm{
+    border-radius: 5px;
+    border-color: rgb(155, 155, 155);
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    margin-top: 10%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
 .btn-secondary, .btn-dark {
     width: 100px;
     height: 35px;

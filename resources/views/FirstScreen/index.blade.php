@@ -58,7 +58,7 @@
     </div>
     </a>
 
-    <div class="card" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <div class="card" onclick=location.href="{{ route('login') }}">
         <img src="{{ asset('images/bd.png') }}" class="card-img-top" alt="Administrador">
         <div class="card-body">
             <p class="card-text">Inicie sesión como administrador y registre, elimine o modifique la información de los usuarios.</p>

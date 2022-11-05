@@ -21,10 +21,16 @@ use Illuminate\Support\Facades\Route;
 // Rutas agrupadas
 Route::resource('Service', ServiceController::class);
 Route::resource('User', UserController::class);
-Route::get('/login', [AuthController::class, 'index'])->name('login');
 
 // Rutas individuales
+// The function or view end with Step is used to make backend operations
+// to make possible the action (login or logout)
 Route::get('/', [UserController::class, 'usersList'])->name('home');
+Route::get('/login', [AuthController::class, 'loginView'])->name('login');
+Route::post('/loginStep', [AuthController::class, 'loginStep'])->name('loginStep');
+Route::get('/registration', [AuthController::class, 'registrationView'])->name('registration');
+Route::post('/registrationStep', [AuthController::class, 'registration'])->name('registrationStep');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Rutas Personalizadas
 Route::prefix('/PaymentDetail')->group( function () {

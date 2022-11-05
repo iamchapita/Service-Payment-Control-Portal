@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PaymentDetailController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 // Rutas agrupadas
 Route::resource('Service', ServiceController::class);
 Route::resource('User', UserController::class);
+Route::get('/login', [AuthController::class, 'index'])->name('login');
 
 // Rutas individuales
 Route::get('/', [UserController::class, 'usersList'])->name('home');

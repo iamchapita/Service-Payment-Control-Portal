@@ -38,7 +38,7 @@
             </li>
             @endisset
             <li class="nav-view">
-                <a class="nav-link">Login</a>
+                <a class="nav-link" href="{{ route('login') }}">Login</a>
             </li>
             </ul>
         </div>

@@ -14,7 +14,7 @@ class PaymentDetailController extends Controller
     protected function validateData(Request $request)
     {
         // Estableciendo los nombres personalizados de los atributos
-        $customAttributes = [
+        $customAttributes = array (
             'userInput' => 'Usuario',
             'serviceInput' => 'Servicio',
             'monthInput' => 'Mes',
@@ -22,7 +22,7 @@ class PaymentDetailController extends Controller
             'payDateInput' => 'Fecha de Pago',
             'depositStatus' => 'Estado del Depósito',
             'depositDateInput' => 'Fecha de Depósito'
-        ];
+        );
 
         // Excluyendo el token de los campos a validar
         $fields = $request->except('_token');

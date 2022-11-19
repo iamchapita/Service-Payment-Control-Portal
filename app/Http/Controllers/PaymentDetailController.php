@@ -264,7 +264,7 @@ class PaymentDetailController extends Controller
         // Estableciendo que ruta tendra el form
         $data['formURL'] = 'updatePaymentDetail';
         // Estableciendo el nombre del boton que tendra el form
-        $data['action'] = 'Editar';
+        $data['action'] = 'Actualizar';
 
         return view('PaymentDetail.headerForm', $data);
     }

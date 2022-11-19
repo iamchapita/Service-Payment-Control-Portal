@@ -3,8 +3,8 @@
 <form class="loginRegistrationForm">
     <!-- Email input -->
     <div class="form-outline mb-4">
-        <input type="email" class="form-control" required autocomplete="off" id="email" name="email"/>
-        <label class="form-label" for="form2Example1">Correo Electrónico</label>
+        <input type="text" class="form-control" required autocomplete="off" id="email" name="email"/>
+        <label class="form-label" for="form2Example1">Nombre de Usuario</label>
     </div>
 
     <!-- Password input -->

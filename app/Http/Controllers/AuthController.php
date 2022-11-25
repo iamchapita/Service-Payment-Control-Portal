@@ -44,6 +44,7 @@ class AuthController extends Controller
         $messages = array(
             'required' => 'El campo :attribute es requerido.',
             'min' => 'El campo :attribute debe tener al menos 8 caracteres.'
+            'max' => 'El campo :attribute debe tener máximo 35 caracteres.'
         );
 
         $validator = Validator::make($rules, $customAttributes, $messages);
@@ -51,7 +52,7 @@ class AuthController extends Controller
         $texName = $request->input('name');
         $password = $request->input('password');
 
-        if (Auth::attempt(['texName' => $texName, 'password' => $password])){
+        if (Auth::attempt(['texName' => $texName, 'password' => $password, 'boolAdminStatus' => true])) {
             $request->session()->regenerate();
             return redirect()->intended(route('home'));
         }

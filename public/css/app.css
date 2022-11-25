@@ -19,7 +19,11 @@
     margin-left: auto;
 }
 
-.loginRegistrationForm{
+.alert{
+    max-width: 250px;
+}
+
+.loginPasswordForm{
     position: absolute;
     width: 50%;
     height: 50%;

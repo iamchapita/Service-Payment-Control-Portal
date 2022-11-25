@@ -43,7 +43,7 @@ class AuthController extends Controller
 
         $messages = array(
             'required' => 'El campo :attribute es requerido.',
-            'min' => 'El campo :attribute debe tener al menos 8 caracteres.'
+            'min' => 'El campo :attribute debe tener al menos 8 caracteres.',
             'max' => 'El campo :attribute debe tener máximo 35 caracteres.'
         );
 

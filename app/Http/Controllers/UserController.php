@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data['values'] = DB::select('SELECT id, texName, boolStatus FROM User ORDER BY boolStatus DESC');
+        $data['values'] = User::all(['id', 'texName', 'boolStatus'])->orderBy('boolStatus');
         $data['currentView'] = 'User';
         $data['views'] = array('PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
@@ -26,8 +26,7 @@ class UserController extends Controller
 
     public function usersList()
     {
-        $data['values'] = DB::select('SELECT id, texName FROM User WHERE boolStatus = 1 AND boolAdminStatus = 0');
-
+        $data['values'] = User::where([['boolStatus', '=', '1'], ['boolAdminStatus', '=', '0']])->get();
         return view('FirstScreen.index', $data);
     }
 }

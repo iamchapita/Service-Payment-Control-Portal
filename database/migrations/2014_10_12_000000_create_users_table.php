@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('User', function (Blueprint $table) {
+        Schema::create('user', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->string('texName');
             $table->boolean('boolStatus');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('User');
+        Schema::dropIfExists('user');
     }
 };

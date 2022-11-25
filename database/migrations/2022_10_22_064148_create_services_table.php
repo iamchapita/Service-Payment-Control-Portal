@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Service', function (Blueprint $table) {
+        Schema::create('service', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->string('texName', 25)->unique();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Service');
+        Schema::dropIfExists('service');
     }
 };

@@ -25,16 +25,16 @@ Route::resource('User', UserController::class);
 // Rutas individuales
 // The function or view end with Step is used to make backend operations
 // to make possible the action (login or logout)
-
 Route::get('/', [UserController::class, 'usersList'])->name('home');
 Route::get('/login', [AuthController::class, 'loginView'])->name('login');
 Route::post('/loginStep', [AuthController::class, 'loginStep'])->name('loginStep');
-// Route::get('/registration', [AuthController::class, 'registrationView'])->name('registration');
-// Route::post('/registrationStep', [AuthController::class, 'registration'])->name('registrationStep');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/passwordChange', [AuthController::class, 'passwordChangeView'])->name('passwordChange');
+Route::post('/passwordChangeStep', [AuthController::class, 'passwordChangeStep'])->name('passwordChangeStep');
+
 
 // Rutas Personalizadas
-Route::prefix('/PaymentDetail')->group( function () {
+Route::prefix('/PaymentDetail')->group(function () {
     Route::get('/', [PaymentDetailController::class, 'index'])->name('historicalDetail');
     Route::get('/SpotifyDetail', [PaymentDetailController::class, 'spotifyDetail'])->name('spotifyDetail');
     Route::get('/NetflixyDetail', [PaymentDetailController::class, 'netflixDetail'])->name('netflixDetail');

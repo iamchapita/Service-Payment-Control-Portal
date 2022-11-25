@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
 
-        Schema::table('paymentDetail', function (Blueprint $table) {
+        Schema::table('paymentDetails', function (Blueprint $table) {
 
             // Setting ForeignKeys
-            $table->foreign('idUserFK')->references('id')->on('user');
-            $table->foreign('idServiceFK')->references('id')->on('service');
-            $table->foreign('idMonthFK')->references('id')->on('month');
+            $table->foreign('idUserFK')->references('id')->on('users');
+            $table->foreign('idServiceFK')->references('id')->on('services');
+            $table->foreign('idMonthFK')->references('id')->on('months');
         });
     }
 

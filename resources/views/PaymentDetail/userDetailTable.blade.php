@@ -1,7 +1,6 @@
 @include('navbar')
 <div class='container'>
-    <h1>{{ $currentView }}</h1>
-    <br>
+    @include('filterAndButton')
     <div class="table-responsive">
         <table class="table table-bordered table-ligth table-hover" id="table">
             <thead class="table-dark">

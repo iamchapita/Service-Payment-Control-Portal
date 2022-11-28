@@ -8,7 +8,7 @@
     <br>
     <br>
     <br>
-    <form method="post" action="{{ route('passwordChangeStep') }}">
+    <form method="post" action="{{ route('PasswordChangeStep') }}">
         @csrf
 
         <!-- Password input -->
@@ -19,7 +19,7 @@
 
         <!-- ConfirmPassword input -->
         <div class="form-outline mb-4">
-            <input type="password" class="form-control" required autocomplete="off" id="confirmPassword" name="confirmPassword" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,35}$" placeholder="Repita la contraseña" />
+            <input type="password" class="form-control" required autocomplete="off" id="confirmPassword" name="password_confirmation" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,35}$" placeholder="Repita la contraseña" />
             <label class="form-label" for="confirmPassword">Confirmación de Contraseña</label>
         </div>
 

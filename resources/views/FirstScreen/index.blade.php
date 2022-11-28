@@ -9,7 +9,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-view">
-                    <a class="nav-link" href="{{ route('historicalDetail') }}">Administrador</a>
+                    <!-- Cambiar esta ruta -->
+                    <a class="nav-link" href="{{ route('PaymentDetail') }}">Administrador</a>
                 </li>
             </ul>
         </div>
@@ -27,7 +28,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="{{ route('userDetail') }}">
+                    <form method="POST" action="{{ route('UserDetail') }}">
                         @csrf
                         <div class="col-md">
                             <div class="form-floating">
@@ -58,7 +59,7 @@
     </div>
     </a>
 
-    <div class="card" onclick=location.href="{{ route('login') }}">
+    <div class="card" onclick=location.href="{{ route('Login') }}">
         <img src="{{ asset('images/bd.png') }}" class="card-img-top" alt="Administrador">
         <div class="card-body">
             <p class="card-text">Inicie sesión como administrador y registre, elimine o modifique la información de los usuarios.</p>

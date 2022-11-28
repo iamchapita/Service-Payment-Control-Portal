@@ -18,13 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Rutas agrupadas
-Route::resource('Service', ServiceController::class);
-Route::resource('User', UserController::class);
 
 // Rutas individuales
-// The function or view end with Step is used to make backend operations
-// to make possible the action (login or logout)
+Route::get('/User', [UserController::class, 'index'])->name('User');
+Route::get('/Service', [ServiceController::class, 'index'])->name('Service');
 Route::get('/', [UserController::class, 'usersList'])->name('Home');
 Route::get('/login', [AuthController::class, 'loginView'])->name('Login');
 Route::post('/loginStep', [AuthController::class, 'loginStep'])->name('LoginStep');

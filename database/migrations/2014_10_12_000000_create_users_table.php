@@ -19,7 +19,8 @@ return new class extends Migration
             $table->boolean('boolStatus');
             $table->boolean('boolAdminStatus')->default(0);
             $table->string('password')->nullable();
-            $table->rememberToken();
+            $table->timestamp('updated_at')->nullable();
+            $table->rememberToken()->nullable();
         });
     }
 

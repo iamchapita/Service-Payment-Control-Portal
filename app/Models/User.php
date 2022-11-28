@@ -21,6 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'texName',
         'password',
+        'updated_at',
     ];
 
     /**

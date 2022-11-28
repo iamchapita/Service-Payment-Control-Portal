@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-view">
-                    <a class="nav-link" href="{{ route('home') }}">Inicio</a>
+                    <a class="nav-link" href="{{ route('Home') }}">Inicio</a>
                 </li>
                 @isset( $views )
                     @foreach ( $views as $view )
@@ -18,7 +18,7 @@
                     </li>
                     @else
                     <li class="nav-view">
-                        <a class="nav-link" href="{{ url( $view ) }}">{{ $view }}</a>
+                        <a class="nav-link" href="{{ route( $view ) }}">{{ $view }}</a>
                     </li>
                     @endif
                     @endforeach
@@ -33,13 +33,9 @@
                         @for ($i=0; $i<3; $i++) <li><a class="dropdown-item" href="{{ route( $elementsDropdownLinks[$i] ) }}">{{ $elementsDropdown[$i] }}</a>
                 </li>
                 @endfor
-
             </ul>
             </li>
             @endisset
-            <li class="nav-view">
-                <a class="nav-link" href="{{ route('login') }}">Login</a>
-            </li>
             </ul>
         </div>
     </div>

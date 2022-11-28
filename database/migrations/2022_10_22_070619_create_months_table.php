@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('months', function (Blueprint $table) {
+        Schema::create('Month', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->string('texName')->unique();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('months');
+        Schema::dropIfExists('Month');
     }
 };

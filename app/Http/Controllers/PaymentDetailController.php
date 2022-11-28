@@ -68,10 +68,10 @@ class PaymentDetailController extends Controller
         $data['values'] = DB::select($query);
         // Variables para la navbar
         $data['currentView'] = 'PaymentDetail';
-        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['views'] = array('PaymentDetail', 'User', 'Service', 'Login');
         $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
-        $data['insertURL'] = 'createPaymentDetail';
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
+        $data['insertURL'] = 'CreatePaymentDetail';
 
         return view('PaymentDetail.historicalTable', $data);
     }
@@ -91,10 +91,10 @@ class PaymentDetailController extends Controller
         $data['values'] = DB::select($query);
         // Variables para la navbar
         $data['currentView'] = 'Histórico Spotify';
-        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['views'] = array('PaymentDetail', 'User', 'Service', 'Login');
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
-        $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
-        $data['insertURL'] = 'createPaymentDetail';
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
+        $data['insertURL'] = 'CreatePaymentDetail';
 
         return view('PaymentDetail.historicalTable', $data);
     }
@@ -112,10 +112,10 @@ class PaymentDetailController extends Controller
         $data['values'] = DB::select($query);
         // Variables para la navbar
         $data['currentView'] = 'Histórico Netflix';
-        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['views'] = array('PaymentDetail', 'User', 'Service', 'Login');
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
-        $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
-        $data['insertURL'] = 'createPaymentDetail';
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
+        $data['insertURL'] = 'CreatePaymentDetail';
 
         return view('PaymentDetail.historicalTable', $data);
     }
@@ -133,10 +133,10 @@ class PaymentDetailController extends Controller
         $data['values'] = DB::select($query);
         // Variables para la navbar
         $data['currentView'] = 'Histórico Disney+';
-        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['views'] = array('PaymentDetail', 'User', 'Service', 'Login');
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
-        $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
-        $data['insertURL'] = 'createPaymentDetail';
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
+        $data['insertURL'] = 'CreatePaymentDetail';
 
         return view('PaymentDetail.historicalTable', $data);
     }
@@ -172,9 +172,9 @@ class PaymentDetailController extends Controller
     {
         // Variables para la navbar
         $data['currentView'] = 'Create PaymentDetail';
-        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['views'] = array('PaymentDetail', 'User', 'Service', 'Login');
         $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
         $data['formURL'] = 'insertPaymentDetail';
         $data['title'] = 'Insertar Nuevo Registro en PaymentDetail';
 
@@ -202,7 +202,7 @@ class PaymentDetailController extends Controller
         $fields = $request->except('_token');
 
         if ($validator->fails()) {
-            return redirect(route('createPaymentDetail'))->withErrors($validator);
+            return redirect(route('CreatePaymentDetail'))->withErrors($validator);
 
         } else {
 
@@ -224,7 +224,7 @@ class PaymentDetailController extends Controller
             DB::insert('INSERT INTO PaymentDetail (idUserFK, idServiceFK, idMonthFK, numPaid, datDate, boolDeposited, datDepositedDate) values (?, ?, ? , ?, ?, ?, ?)', [$idUserFK, $idServiceFK, $idMonthFK, $numPaid, $datDate, $boolDeposited, $datDepositedDate]);
 
             // Se redirecciona a la ruta especificada
-            return redirect(route('historicalDetail'));
+            return redirect(route('PaymentDetail'));
 
         }
     }
@@ -250,9 +250,9 @@ class PaymentDetailController extends Controller
     {
         // Estableciendo variables que se retornaran a la vista
         $data['currentView'] = 'Editar PaymentDetail';
-        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['views'] = array('PaymentDetail', 'User', 'Service', 'Login');
         $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
         $data['title'] = 'Editar Registro en PaymentDetail';
         // Obteniendo la informacion a editar
         $data['values'] = DB::select('SELECT * FROM PaymentDetail WHERE id = ?', [$id]);
@@ -284,7 +284,7 @@ class PaymentDetailController extends Controller
         $fields = $request->except('_token');
 
         if ($validator->fails()) {
-            return redirect(route('createPaymentDetail'))->withErrors($validator);
+            return redirect(route('CreatePaymentDetail'))->withErrors($validator);
 
         } else {
 
@@ -306,7 +306,7 @@ class PaymentDetailController extends Controller
             DB::update('UPDATE PaymentDetail SET idUserFK = ?, idServiceFK = ?, idMonthFK = ?, numPaid = ?, datDate = ?, boolDeposited = ?, datDepositedDate = ? WHERE id = ?', [$idUserFK, $idServiceFK, $idMonthFK, $numPaid, $datDate, $boolDeposited, $datDepositedDate, $id]);
 
             // Se redirecciona a la ruta especificada
-            return redirect(route('historicalDetail'));
+            return redirect(route('PaymentDetail'));
         }
 
     }
@@ -321,6 +321,6 @@ class PaymentDetailController extends Controller
     {
         // Buscando en la Base de Datos
         DB::delete('DELETE FROM PaymentDetail WHERE id = ?', [$id]);
-        return redirect(route('historicalDetail'));
+        return redirect(route('PaymentDetail'));
     }
 }

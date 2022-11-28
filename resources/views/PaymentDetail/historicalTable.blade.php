@@ -36,13 +36,13 @@
                     </td>
                     <td>{{ $value->FechaDeposito }}</td>
                     <td>
-                        <form method="POST" action="{{ route('editPaymentDetail', $value->id) }}">
+                        <form method="POST" action="{{ route('EditPaymentDetail', $value->id) }}">
                             @csrf
                             <button type="submit" class="btn btn-success">Editar</button>
                         </form>
                     </td>
                     <td>
-                        <form method="POST" action="{{ route('destroyPaymentDetail', $value->id) }}">
+                        <form method="POST" action="{{ route('DestroyPaymentDetail', $value->id) }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" onclick="return confirm('¿Desea borrar este registro?')">Borrar</button>

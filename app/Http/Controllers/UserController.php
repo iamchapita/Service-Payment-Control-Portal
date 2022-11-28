@@ -16,11 +16,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data['values'] = User::all(['id', 'texName', 'boolStatus'])->orderBy('boolStatus');
+        $data['values'] = User::all(['id', 'texName', 'boolStatus'])->sortBy('boolStatus');
         $data['currentView'] = 'User';
-        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['views'] = array('PaymentDetail', 'User', 'Service', 'Login');
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
-        $data['elementsDropdownLinks'] = array('spotifyDetail', 'netflixDetail', 'disneyDetail');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
 
         return view('User.index', $data);
     }

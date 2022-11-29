@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use PhpParser\Node\Expr\FuncCall;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -31,10 +34,27 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Fortify::createUsersUsing(CreateNewUser::class);
-        Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
-        Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
-        Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+        Fortify::loginView(function () {
+            return view('auth.login');
+        });
+
+        Fortify::authenticateUsing(function (Request $request) {
+            $user = User::where('texName', $request->input('username'))->first();
+
+            if($user && Hash::check($request->input('password'), $user->password)) {
+                return $user;
+            }
+        });
+
+        // Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
+
+        // Fortify::registerView(function () {
+        //     return view('auth.register');
+        // });
+
+        // Fortify::createUsersUsing(CreateNewUser::class);
+        // Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
+        // Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
         RateLimiter::for('login', function (Request $request) {
             $email = (string) $request->email;

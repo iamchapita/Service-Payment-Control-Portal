@@ -24,7 +24,7 @@ Route::get('/User', [UserController::class, 'index'])->name('User');
 Route::get('/Service', [ServiceController::class, 'index'])->name('Service');
 Route::get('/', [UserController::class, 'usersList'])->name('Home');
 
-Route::get('/', function () {
+Route::get('/Dashboard', function () {
     $data['currentView'] = 'Dashboard';
     $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
     $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
@@ -38,10 +38,10 @@ Route::prefix('/PaymentDetail')->group(function () {
     Route::get('/SpotifyDetail', [PaymentDetailController::class, 'spotifyDetail'])->name('SpotifyDetail');
     Route::get('/NetflixyDetail', [PaymentDetailController::class, 'netflixDetail'])->name('NetflixDetail');
     Route::get('/DisneyDetail', [PaymentDetailController::class, 'disneyDetail'])->name('DisneyDetail');
-    Route::get('/create', [PaymentDetailController::class, 'create'])->name('CreatePaymentDetail');
+    Route::get('/Create', [PaymentDetailController::class, 'create'])->name('CreatePaymentDetail');
     // Contiene los detalles de pago de servicio personal
     Route::post('/UserDetail', [PaymentDetailController::class, 'userDetail'])->name('UserDetail');
-    Route::post('/insert', [PaymentDetailController::class, 'store'])->name('InsertPaymentDetail');
+    Route::post('/Insert', [PaymentDetailController::class, 'store'])->name('InsertPaymentDetail');
     Route::post('/{id}/edit', [PaymentDetailController::class, 'edit'])->name('EditPaymentDetail');
     Route::put('/{id}/update', [PaymentDetailController::class, 'update'])->name('UpdatePaymentDetail');
     Route::delete('/{id}/delete', [PaymentDetailController::class, 'destroy'])->name('DestroyPaymentDetail');

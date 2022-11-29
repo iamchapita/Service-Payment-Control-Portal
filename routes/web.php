@@ -25,9 +25,12 @@ Route::get('/Service', [ServiceController::class, 'index'])->name('Service');
 Route::get('/', [UserController::class, 'usersList'])->name('Home');
 
 Route::get('/', function () {
-    return view('dashboard');
+    $data['currentView'] = 'Dashboard';
+    $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
+    $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
+    $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
+    return view('dashboard', $data);
 })->middleware('auth')->name('Dashboard');
-
 
 // Rutas Personalizadas
 Route::prefix('/PaymentDetail')->group(function () {

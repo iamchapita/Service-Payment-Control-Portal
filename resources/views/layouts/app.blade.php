@@ -47,6 +47,7 @@
                         @endforeach
                         @endisset
                         @isset( $elementsDropdown )
+
                         <li class="nav-view dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Detalle de PaymentDetail
@@ -56,38 +57,38 @@
                                 @for ($i=0; $i<3; $i++) <li><a class="dropdown-item" href="{{ route( $elementsDropdownLinks[$i] ) }}">{{ $elementsDropdown[$i] }}</a>
                         </li>
                         @endfor
-                        @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('Login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                        @endif
-                        @else
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ Auth::user()->name }}
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="{{ route('Logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
-                            </ul>
-                            <form id="logout-form" action="{{ route('Logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                        @endguest
+
                     </ul>
                     </li>
                     @endisset
-                    </ul>
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                    @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                    @endif
+                    @else
+                    <li>
+                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                    </li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
+                @endguest
+                </ul>
             </div>
-        </nav>
-        <main class="pt-4">
-            @yield('content')
-        </main>
+    </div>
+    </nav>
+    <main class="pt-4">
+        @yield('content')
+    </main>
     </div>
 </body>
+
 </html>

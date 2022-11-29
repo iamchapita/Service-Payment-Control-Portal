@@ -1,5 +1,8 @@
 @include('headers')
 @include('navbar')
+@if($errors->any())
+    {!! implode('', $errors->all('<div class="alert alert-danger" role="alert">:message</div>')) !!}
+@endif
 <div class="loginPasswordForm">
     <h1>{{ $currentView }}</h1>
     <br>
@@ -9,7 +12,7 @@
         @csrf
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <input type="text" class="form-control" required autocomplete="off" id="name" name="name" placeholder="Un solo nombre" pattern="[A-Za-z]{4,20}" title="Letras y números. Tamaño mínimo: 4. Tamaño máximo: 20" />
+            <input type="text" class="form-control" required autocomplete="off" id="name" name="name" placeholder="Un solo nombre" pattern="[A-Za-z]{4,20}" autofocus title="Letras y números. Tamaño mínimo: 4. Tamaño máximo: 20" />
             <label class="form-label" for="name">Nombre</label>
         </div>
 

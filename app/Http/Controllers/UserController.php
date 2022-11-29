@@ -34,7 +34,8 @@ class UserController extends Controller
     public static function updatePassword($password)
     {
         $user = User::where('boolAdminStatus', '1')->first();
-        $user->password = Hash::make($password);
+        // $user->password = Hash::make($password);
+        $user->password = $password;
         $user->save();
     }
 }

@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data['values'] = User::all(['id', 'texName', 'boolStatus'])->sortBy('boolStatus');
+        $data['values'] = User::all(['id', 'texName', 'boolStatus', 'boolAdminStatus']);
         $data['currentView'] = 'User';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');

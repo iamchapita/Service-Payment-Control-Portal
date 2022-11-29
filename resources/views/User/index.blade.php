@@ -3,12 +3,13 @@
 <div class='container'>
     @include('filterAndButton')
     <div class="table-responsive">
-        <table class="table table-bordered table-ligth table-striped" id="table">
+        <table class="table table-bordered table-ligth table-hover" id="table">
             <thead class="table-dark">
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
                     <th>Estado</th>
+                    <th>Administrador</th>
                 </tr>
             </thead>
 
@@ -19,9 +20,16 @@
                     <td>{{ $value->texName }}</td>
                     <td>
                         @if ( $value->boolStatus == 0 )
-                        No Activo
+                        Inactivo
                         @else
                         Activo
+                        @endif
+                    </td>
+                    <td>
+                        @if ( $value->boolAdminStatus == 0 )
+                        No
+                        @else
+                        Sí
                         @endif
                     </td>
                 </tr>

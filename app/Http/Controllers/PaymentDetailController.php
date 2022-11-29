@@ -175,7 +175,7 @@ class PaymentDetailController extends Controller
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
         $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
-        $data['formURL'] = 'insertPaymentDetail';
+        $data['formURL'] = 'InsertPaymentDetail';
         $data['title'] = 'Insertar Nuevo Registro en PaymentDetail';
 
         // Datos para los campos del form
@@ -262,7 +262,7 @@ class PaymentDetailController extends Controller
         $data['months'] = DB::select('SELECT id, texName FROM Month ORDER BY id');
         $data['depositState'] = array('Pendiente', 'Depósito Realizado');
         // Estableciendo que ruta tendra el form
-        $data['formURL'] = 'updatePaymentDetail';
+        $data['formURL'] = 'UpdatePaymentDetail';
         // Estableciendo el nombre del boton que tendra el form
         $data['action'] = 'Actualizar';
 

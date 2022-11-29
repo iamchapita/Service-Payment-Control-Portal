@@ -18,17 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 // Rutas individuales
 Route::get('/User', [UserController::class, 'index'])->name('User');
 Route::get('/Service', [ServiceController::class, 'index'])->name('Service');
 Route::get('/', [UserController::class, 'usersList'])->name('Home');
-Route::get('/login', [AuthController::class, 'loginView'])->name('Login');
-Route::post('/loginStep', [AuthController::class, 'loginStep'])->name('LoginStep');
-Route::get('/logout', [AuthController::class, 'logout'])->name('Logout');
-Route::get('/passwordChange', [AuthController::class, 'passwordChangeView'])->name('PasswordChange');
-Route::post('/passwordChangeStep', [AuthController::class, 'passwordChangeStep'])->name('PasswordChangeStep');
-
 
 // Rutas Personalizadas
 Route::prefix('/PaymentDetail')->group(function () {

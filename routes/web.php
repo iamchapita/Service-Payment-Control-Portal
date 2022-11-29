@@ -6,6 +6,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use PhpParser\Node\Expr\FuncCall;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/User', [UserController::class, 'index'])->name('User');
 Route::get('/Service', [ServiceController::class, 'index'])->name('Service');
 Route::get('/', [UserController::class, 'usersList'])->name('Home');
+
+Route::get('/', function () {
+    return view('dashboard');
+})->middleware('auth')->name('Dashboard');
+
 
 // Rutas Personalizadas
 Route::prefix('/PaymentDetail')->group(function () {

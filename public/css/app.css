@@ -33,8 +33,8 @@
 }
 
 .btn-secondary, .btn-dark {
-    width: 100px;
-    height: 35px;
+    width: 120px;
+    height: 30px;
 }
 
 .container {
@@ -47,6 +47,7 @@
     border-color: rgb(155, 155, 155);
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 15px;
     max-width: 500px;
 }
 

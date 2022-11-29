@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $data['values'] = User::all(['id', 'texName', 'boolStatus'])->sortBy('boolStatus');
         $data['currentView'] = 'User';
-        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
         $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
 

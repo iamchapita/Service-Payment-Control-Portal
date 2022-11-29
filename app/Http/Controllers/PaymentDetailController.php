@@ -68,7 +68,7 @@ class PaymentDetailController extends Controller
         $data['values'] = DB::select($query);
         // Variables para la navbar
         $data['currentView'] = 'PaymentDetail';
-        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
         $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
         $data['insertURL'] = 'CreatePaymentDetail';
@@ -91,7 +91,7 @@ class PaymentDetailController extends Controller
         $data['values'] = DB::select($query);
         // Variables para la navbar
         $data['currentView'] = 'Histórico Spotify';
-        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
         $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
         $data['insertURL'] = 'CreatePaymentDetail';
@@ -112,7 +112,7 @@ class PaymentDetailController extends Controller
         $data['values'] = DB::select($query);
         // Variables para la navbar
         $data['currentView'] = 'Histórico Netflix';
-        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
         $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
         $data['insertURL'] = 'CreatePaymentDetail';
@@ -133,7 +133,7 @@ class PaymentDetailController extends Controller
         $data['values'] = DB::select($query);
         // Variables para la navbar
         $data['currentView'] = 'Histórico Disney+';
-        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
         $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
         $data['insertURL'] = 'CreatePaymentDetail';
@@ -172,7 +172,7 @@ class PaymentDetailController extends Controller
     {
         // Variables para la navbar
         $data['currentView'] = 'Create PaymentDetail';
-        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
         $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
         $data['formURL'] = 'insertPaymentDetail';
@@ -250,7 +250,7 @@ class PaymentDetailController extends Controller
     {
         // Estableciendo variables que se retornaran a la vista
         $data['currentView'] = 'Editar PaymentDetail';
-        $data['views'] = array('PaymentDetail', 'User', 'Service');
+        $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
         $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
         $data['title'] = 'Editar Registro en PaymentDetail';

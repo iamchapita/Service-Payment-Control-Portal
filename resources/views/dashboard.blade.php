@@ -5,7 +5,7 @@
         @isset($views)
         @foreach($views as $view)
             @if($view != 'Dashboard')
-                <div class="col-sm-6">
+                <div class="col-sm-10 col-md-10 col-lg-6">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">{{ $view }}</h5>

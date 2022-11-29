@@ -49,6 +49,8 @@
     margin-right: auto;
     margin-bottom: 15px;
     max-width: 500px;
+    overflow-x: scroll;
+    word-wrap: break-word;
 }
 
 .row {

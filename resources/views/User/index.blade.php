@@ -1,4 +1,5 @@
-@include('navbar')
+@extends('layouts.app')
+@section('content')
 <div class='container'>
     @include('filterAndButton')
     <div class="table-responsive">
@@ -29,3 +30,5 @@
         </table>
     </div>
 </div>
+
+@endsection

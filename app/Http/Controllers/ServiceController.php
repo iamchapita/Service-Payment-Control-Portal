@@ -17,7 +17,7 @@ class ServiceController extends Controller
     {
         $data['values'] = DB::select('SELECT * FROM Service ORDER BY id ASC');
         $data['currentView'] = 'Service';
-        $data['views'] = array('PaymentDetail', 'User', 'Service', 'Login');
+        $data['views'] = array('PaymentDetail', 'User', 'Service');
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
         $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
 

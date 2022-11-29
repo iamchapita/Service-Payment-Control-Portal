@@ -1,14 +1,6 @@
-@include('headers')
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand">Control de Pagos Spotify</a>
-    </div>
-</nav>
-
-
+@extends('layouts.app')
+@section('content')
 <div class="container" id="cardContainer">
-
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -48,10 +40,12 @@
     </div>
     </a>
 
-    <div class="card" onclick=location.href="{{ route('Login') }}">
+    <div class="card" onclick=location.href="{{ route('login') }}">
         <img src="{{ asset('images/bd.png') }}" class="card-img-top" alt="Administrador">
         <div class="card-body">
             <p class="card-text">Inicie sesión como administrador y registre, elimine o modifique la información de los usuarios.</p>
         </div>
     </div>
 </div>
+
+@endsection

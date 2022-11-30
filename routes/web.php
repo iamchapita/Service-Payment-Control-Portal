@@ -20,8 +20,8 @@ use PhpParser\Node\Expr\FuncCall;
 */
 
 // Rutas individuales
-Route::get('/User', [UserController::class, 'index'])->name('User');
-Route::get('/Service', [ServiceController::class, 'index'])->name('Service');
+Route::get('/User', [UserController::class, 'index'])->middleware('auth')->name('User');
+Route::get('/Service', [ServiceController::class, 'index'])->middleware('auth')->name('Service');
 Route::get('/', [UserController::class, 'usersList'])->name('Home');
 
 Route::get('/Dashboard', function () {
@@ -34,14 +34,14 @@ Route::get('/Dashboard', function () {
 
 // Rutas Personalizadas
 Route::prefix('/PaymentDetail')->group(function () {
-    Route::get('/', [PaymentDetailController::class, 'index'])->name('PaymentDetail');
-    Route::get('/SpotifyDetail', [PaymentDetailController::class, 'spotifyDetail'])->name('SpotifyDetail');
-    Route::get('/NetflixyDetail', [PaymentDetailController::class, 'netflixDetail'])->name('NetflixDetail');
-    Route::get('/DisneyDetail', [PaymentDetailController::class, 'disneyDetail'])->name('DisneyDetail');
-    Route::get('/Create', [PaymentDetailController::class, 'create'])->name('CreatePaymentDetail');
+    Route::get('/', [PaymentDetailController::class, 'index'])->middleware('auth')->name('PaymentDetail');
+    Route::get('/SpotifyDetail', [PaymentDetailController::class, 'spotifyDetail'])->middleware('auth')->name('SpotifyDetail');
+    Route::get('/NetflixyDetail', [PaymentDetailController::class, 'netflixDetail'])->middleware('auth')->name('NetflixDetail');
+    Route::get('/DisneyDetail', [PaymentDetailController::class, 'disneyDetail'])->middleware('auth')->name('DisneyDetail');
+    Route::get('/Create', [PaymentDetailController::class, 'create'])->middleware('auth')->name('CreatePaymentDetail');
     Route::post('/UserDetail', [PaymentDetailController::class, 'userDetail'])->name('UserDetail');
-    Route::post('/Insert', [PaymentDetailController::class, 'store'])->name('InsertPaymentDetail');
-    Route::post('/{id}/edit', [PaymentDetailController::class, 'edit'])->name('EditPaymentDetail');
-    Route::put('/{id}/update', [PaymentDetailController::class, 'update'])->name('UpdatePaymentDetail');
-    Route::delete('/{id}/delete', [PaymentDetailController::class, 'destroy'])->name('DestroyPaymentDetail');
+    Route::post('/Insert', [PaymentDetailController::class, 'store'])->middleware('auth')->name('InsertPaymentDetail');
+    Route::post('/{id}/edit', [PaymentDetailController::class, 'edit'])->middleware('auth')->name('EditPaymentDetail');
+    Route::put('/{id}/update', [PaymentDetailController::class, 'update'])->middleware('auth')->name('UpdatePaymentDetail');
+    Route::delete('/{id}/delete', [PaymentDetailController::class, 'destroy'])->middleware('auth')->name('DestroyPaymentDetail');
 });

@@ -33,6 +33,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-view">
+                            <a class="nav-link" href="{{ route('Home') }}">Inicio</a>
+                        </li>
                         @isset( $views )
                         @foreach ( $views as $view )
                         @if ( $view == $currentView )

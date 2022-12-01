@@ -16,10 +16,14 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <script src="{{asset('js/filter.js')}}"></script>
+    <script src="{{asset('js/clearSelect.js')}}"></script>
+    <script src="{{asset('js/checkField.js')}}"></script>
 </head>
 
 <body>
-<div id="app">
+    <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">{{ 'Sistema de Control de Pagos' }}</a>

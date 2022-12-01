@@ -2,25 +2,24 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <!DOCTYPE html>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link href="{{asset('css/app.css')}}" rel="stylesheet">
-        <script src="{{asset('js/spp.js')}}" defer></script>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <script src="{{asset('js/filter.js')}}"></script>
-        <script src="{{asset('js/clearSelect.js')}}"></script>
-        <script src="{{asset('js/checkField.js')}}"></script>
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-        <title>Sistema de Control de Pagos</title>
-    </head>
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+</head>
 
 <body>
-    <div id="app">
+<div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">{{ 'Sistema de Control de Pagos' }}</a>
@@ -29,6 +28,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-view">
+                            <a class="nav-link" href="{{ route('Home') }}">Inicio</a>
+                        </li>
                         @isset( $views )
                         @foreach ( $views as $view )
                         @if ( $view == $currentView )

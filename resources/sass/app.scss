@@ -6,3 +6,79 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+
+#cardContainer {
+    margin-top: 5%;
+    display: grid;
+    grid-auto-flow: column;
+}
+
+#filterAndButton {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+#searchInput {
+    margin-right: 10px;
+    max-width: 350px;
+    height: 35px;
+}
+
+#insertButton {
+    margin-left: auto;
+}
+
+.alert-secondary{
+    max-width: 250px;
+}
+
+.loginPasswordForm{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    margin-top: 10%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.btn-secondary, .btn-dark {
+    width: 120px;
+    height: 30px;
+}
+
+.container {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.card {
+    border-radius: 5px;
+    border-color: rgb(155, 155, 155);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    max-width: 500px;
+    overflow-x: scroll;
+    word-wrap: break-word;
+}
+
+.row {
+    margin: auto;
+}
+
+.submitButton{
+    float: right;
+}
+
+table {
+    text-align: center;
+}
+
+select:required:invalid {
+    border-color: red;
+}
+
+input:required:invalid {
+    border-color: red;
+}

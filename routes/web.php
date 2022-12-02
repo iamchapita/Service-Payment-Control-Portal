@@ -19,8 +19,7 @@ use PhpParser\Node\Expr\FuncCall;
 |
 */
 
-// Rutas individuales
-Route::get('/User', [UserController::class, 'index'])->middleware('auth')->name('User');
+
 Route::get('/Service', [ServiceController::class, 'index'])->middleware('auth')->name('Service');
 Route::get('/', [UserController::class, 'usersList'])->name('Home');
 
@@ -33,6 +32,15 @@ Route::get('/Dashboard', function () {
 })->middleware('auth')->name('Dashboard');
 
 // Rutas Personalizadas
+
+Route::prefix('/User')->group(function (){
+    Route::get('/', [UserController::class, 'index'])->middleware('auth')->name('User');
+    Route::get('/Create', [UserController::class, 'create'])->middleware('auth')->name('CreateUser');
+    Route::post('/Insert', [UserController::class, 'store'])->middleware('auth')->name('InsertUser');
+    Route::post('/{id}/edit', [UserController::class, 'edit'])->middleware('auth')->name('EditUser');
+    Route::put('/{id}/update', [UserController::class, 'update'])->middleware('auth')->name('UpdateUser');
+});
+
 Route::prefix('/PaymentDetail')->group(function () {
     Route::get('/', [PaymentDetailController::class, 'index'])->middleware('auth')->name('PaymentDetail');
     Route::get('/SpotifyDetail', [PaymentDetailController::class, 'spotifyDetail'])->middleware('auth')->name('SpotifyDetail');

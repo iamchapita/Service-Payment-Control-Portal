@@ -10,6 +10,7 @@
                     <th>Nombre</th>
                     <th>Estado</th>
                     <th>Administrador</th>
+                    <th>Editar</th>
                 </tr>
             </thead>
 
@@ -31,6 +32,12 @@
                         @else
                         Sí
                         @endif
+                    </td>
+                    <td>
+                        <form method="POST" action="{{ route('EditUser', $value->id) }}">
+                            @csrf
+                            <button type="submit" class="btn btn-success">Editar</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

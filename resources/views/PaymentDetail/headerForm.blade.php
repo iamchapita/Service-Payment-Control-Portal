@@ -1,15 +1,7 @@
 @extends('layouts.app')
 @section('content')
-@if(count($errors) > 0)
-<div class="alert alert-danger" role="alert">
-    <ul>
-        @foreach($errors -> all() as $error)
-        <li>
-            {{ $error }}
-        </li>
-        @endforeach
-    </ul>
-</div>
+@if($errors->any())
+{!! implode('', $errors->all('<div class="alert alert-danger" role="alert">:message</div>')) !!}
 @endif
 <div class="container">
     @isset($title)

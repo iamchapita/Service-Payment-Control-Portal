@@ -114,6 +114,61 @@ class UserController extends Controller
 
             return redirect(route('User'));
         }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(int $id){
+
+        // Variables para la vista
+        $data['currentView'] = 'Actualizar User';
+        $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
+        // URL del formulario
+        $data['formURL'] = 'UpdateUser';
+        $data['title'] = 'Actualizar User';
+        // Texto del boton del formulario
+        $data['action'] = 'Actualizar';
+
+        // Campos del formulario
+        $data['values'] = User::where('id', $id)->get();
+
+        return view('User.headerForm', $data);
+
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, int $id)
+    {
+        // Validando los campos
+        $validator = $this->validator($request);
+
+        // Verificando si la validacion es correcta o no
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+
+        }else{
+
+            // Instancia de User para la posterior actualizacion
+            $user = User::find($id);
+            $user->texName = $request->input('texName');
+            $user->boolStatus = $request->input('boolStatus');
+            $user->boolAdminStatus = $request->input('boolAdminStatus');
+
+            $user->save();
+
+            return redirect(route('User'));
+        }
 
     }
 }

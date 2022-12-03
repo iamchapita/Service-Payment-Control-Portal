@@ -10,7 +10,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $view }}</h5>
                             <p class="card-text">Administre la informacion de {{ $view }} almacenada.</p>
-                            <a href="{{ route( $view ) }}" class="btn btn-dark">{{ $view }}</a>
+                            <a href="{{ route( $view ) }}" class="btn btn-dark">Ir</a>
                         </div>
                     </div>
                 </div>

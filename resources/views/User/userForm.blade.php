@@ -1,6 +1,6 @@
 <div class="input-group mb-3">
     <label class="input-group-text" for="userInput">Nombre</label>
-    <input type="text" class="form-control" required autocomplete="off" name="texName" id="texName" pattern="[A-Za-z]{4,20}"  placeholder="Ingrese un nombre del Usuario" @if(isset($values)) @foreach($values as $value) value={{ $value->texName }} @endforeach @endif>
+    <input type="text" class="form-control" required autocomplete="off" name="texName" id="texName" pattern="[A-ZÁÉÍÓÚña-záéíóuñ]{4,20}"  placeholder="Ingrese un nombre del Usuario" @if(isset($values)) @foreach($values as $value) value={{ $value->texName }} @endforeach @endif>
 </div>
 
 <div class="input-group mb-3">

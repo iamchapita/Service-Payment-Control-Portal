@@ -3,7 +3,7 @@
 <div class='container'>
     @include('filterAndButton')
     <div class="table-responsive">
-        <table class="table table-bordered table-ligth table-hover" id="table">
+        <table class="table table-bordered table-ligth table-hover align-middle" id="table">
             <thead class="table-dark">
                 <tr>
                     <th>Usuario</th>

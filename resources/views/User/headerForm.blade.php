@@ -13,9 +13,12 @@
     <form method="POST" action="{{ route($formURL, $value->id) }}" enctype="multipart/form-data">
         @method('PUT')
         @endforeach
-        @endif
-        @csrf
-        @include('User.userForm')
+        @else
+        <form method="POST" action="{{ route($formURL) }}" enctype="multipart/form-data">
+            @endif
+            @csrf
+            @include('User.userForm')
+        </form>
     </form>
 </div>
 

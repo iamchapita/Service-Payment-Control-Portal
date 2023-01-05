@@ -8,16 +8,22 @@
 // Realiza el filtrado de datos de la tabla
 function searchFilter() {
     // Se declaran las variables utilizadas para el proceso de filtrado
-    var input, filter, table, tr, td, i, textValue;
-    input = document.getElementById("searchInput");
-    filter = input.value;
+    var filter, yearFilter, yearFilterValue, table, tr;
+
+    filter = document.getElementById("searchInput");
+    yearFilter = document.getElementById("yearFilterInput");
+
+    filterValue = filter.value;
+    yearFilterValue = yearFilter.value;
+
     table = document.getElementById("table");
     tr = table.getElementsByTagName("tr");
 
     // Se recorren todos los tr de la tabla
     for (var i = 1; i < tr.length; i++) {
+
         // Se comprueba que la cadena a filtrar esta incluida en el elemento iterado
-        if (tr[i].textContent.indexOf(filter) > -1) {
+        if (tr[i].textContent.indexOf(filterValue) > -1 && tr[i].textContent.indexOf(yearFilterValue) > -1) {
             tr[i].style.display = "";
         // Se oculta si la cadena a filtrar no esta incluida en el elemento iterado
         } else {

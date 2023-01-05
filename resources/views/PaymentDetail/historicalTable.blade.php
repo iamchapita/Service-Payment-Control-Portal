@@ -5,7 +5,7 @@
     <div class="table-responsive">
         <table class="table table-bordered table-ligth table-hover align-middle" id="table">
             <thead class="table-dark">
-                <tr>
+                <tr class="align-middle">
                     <th>#</th>
                     <th>Usuario</th>
                     <th>Servicio</th>

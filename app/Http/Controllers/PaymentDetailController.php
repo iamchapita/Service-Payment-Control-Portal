@@ -66,6 +66,8 @@ class PaymentDetailController extends Controller
 
         // Datos de consulta SQL
         $data['values'] = DB::select($query);
+        // Datos para el combobox de años
+        $data['years'] = DB::select('SELECT DISTINCT(YEAR(datDate)) as "year" FROM PaymentDetail;');
         // Variables para la navbar
         $data['currentView'] = 'PaymentDetail';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
@@ -85,10 +87,12 @@ class PaymentDetailController extends Controller
     public function spotifyDetail()
     {
         // Estableciendo la consulta para mostrar valores en lugar de llaves foraneas
-        $query = 'SELECT( SELECT PD.id FROM PaymentDetail as PD WHERE PaymentDetail.id = PD.id ) as id,( select User.texName from User where User.id = PaymentDetail.idUserFK ) AS Usuario, ( select Service.texName from Service where Service.id = PaymentDetail.idServiceFK ) AS Servicio, ( select Month.texName from Month where Month.id = PaymentDetail.idMonthFK ) AS Mes, PaymentDetail.datDate AS Fecha, PaymentDetail.numPaid AS Pago, PaymentDetail.boolDeposited AS Estado, PaymentDetail.datDepositedDate AS FechaDeposito FROM ( PaymentDetail join ( select User.id AS id from User where User.boolStatus = 1 ) UserInner on ( PaymentDetail.idUserFK = UserInner.id ) ) WHERE PaymentDetail.idServiceFK = 1 AND YEAR(PaymentDetail.datDate) = YEAR(CURRENT_TIMESTAMP())';
+        $query = 'SELECT( SELECT PD.id FROM PaymentDetail as PD WHERE PaymentDetail.id = PD.id ) as id,( select User.texName from User where User.id = PaymentDetail.idUserFK ) AS Usuario, ( select Service.texName from Service where Service.id = PaymentDetail.idServiceFK ) AS Servicio, ( select Month.texName from Month where Month.id = PaymentDetail.idMonthFK ) AS Mes, PaymentDetail.datDate AS Fecha, PaymentDetail.numPaid AS Pago, PaymentDetail.boolDeposited AS Estado, PaymentDetail.datDepositedDate AS FechaDeposito FROM ( PaymentDetail join ( select User.id AS id from User where User.boolStatus = 1 ) UserInner on ( PaymentDetail.idUserFK = UserInner.id ) ) WHERE PaymentDetail.idServiceFK = 1';
 
         // Datos de consulta SQL
         $data['values'] = DB::select($query);
+        // Datos para el combobox de años
+        $data['years'] = DB::select('SELECT DISTINCT(YEAR(datDate)) as "year" FROM PaymentDetail;');
         // Variables para la navbar
         $data['currentView'] = 'Histórico Spotify';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
@@ -106,10 +110,12 @@ class PaymentDetailController extends Controller
     public function netflixDetail()
     {
         // Estableciendo la consulta para mostrar valores en lugar de llaves foraneas
-        $query = 'SELECT ( SELECT PD.id FROM PaymentDetail as PD WHERE PaymentDetail.id = PD.id ) as id,( select User.texName from User where User.id = PaymentDetail.idUserFK ) AS Usuario, ( select Service.texName from Service where Service.id = PaymentDetail.idServiceFK ) AS Servicio, ( select Month.texName from Month where Month.id = PaymentDetail.idMonthFK ) AS Mes, PaymentDetail.datDate AS Fecha, PaymentDetail.numPaid AS Pago, PaymentDetail.boolDeposited AS Estado, PaymentDetail.datDepositedDate AS FechaDeposito FROM ( PaymentDetail join ( select User.id AS id from User where User.boolStatus = 1 ) UserInner on ( PaymentDetail.idUserFK = UserInner.id ) ) WHERE PaymentDetail.idServiceFK = 2 AND YEAR(PaymentDetail.datDate) = YEAR(CURRENT_TIMESTAMP())';
+        $query = 'SELECT ( SELECT PD.id FROM PaymentDetail as PD WHERE PaymentDetail.id = PD.id ) as id,( select User.texName from User where User.id = PaymentDetail.idUserFK ) AS Usuario, ( select Service.texName from Service where Service.id = PaymentDetail.idServiceFK ) AS Servicio, ( select Month.texName from Month where Month.id = PaymentDetail.idMonthFK ) AS Mes, PaymentDetail.datDate AS Fecha, PaymentDetail.numPaid AS Pago, PaymentDetail.boolDeposited AS Estado, PaymentDetail.datDepositedDate AS FechaDeposito FROM ( PaymentDetail join ( select User.id AS id from User where User.boolStatus = 1 ) UserInner on ( PaymentDetail.idUserFK = UserInner.id ) ) WHERE PaymentDetail.idServiceFK = 2 ';
 
         // Datos de consulta SQL
         $data['values'] = DB::select($query);
+        // Datos para el combobox de años
+        $data['years'] = DB::select('SELECT DISTINCT(YEAR(datDate)) as "year" FROM PaymentDetail;');
         // Variables para la navbar
         $data['currentView'] = 'Histórico Netflix';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
@@ -127,10 +133,12 @@ class PaymentDetailController extends Controller
     public function disneyDetail()
     {
         // Estableciendo la consulta para mostrar valores en lugar de llaves foraneas
-        $query = 'SELECT ( SELECT PD.id FROM PaymentDetail as PD WHERE PaymentDetail.id = PD.id ) as id,( select User.texName from User where User.id = PaymentDetail.idUserFK ) AS Usuario, ( select Service.texName from Service where Service.id = PaymentDetail.idServiceFK ) AS Servicio, ( select Month.texName from Month where Month.id = PaymentDetail.idMonthFK ) AS Mes, PaymentDetail.datDate AS Fecha, PaymentDetail.numPaid AS Pago, PaymentDetail.boolDeposited AS Estado, PaymentDetail.datDepositedDate AS FechaDeposito FROM ( PaymentDetail join ( select User.id AS id from User where User.boolStatus = 1 ) UserInner on ( PaymentDetail.idUserFK = UserInner.id ) ) WHERE PaymentDetail.idServiceFK = 3 AND YEAR(PaymentDetail.datDate) = YEAR(CURRENT_TIMESTAMP())';
+        $query = 'SELECT ( SELECT PD.id FROM PaymentDetail as PD WHERE PaymentDetail.id = PD.id ) as id,( select User.texName from User where User.id = PaymentDetail.idUserFK ) AS Usuario, ( select Service.texName from Service where Service.id = PaymentDetail.idServiceFK ) AS Servicio, ( select Month.texName from Month where Month.id = PaymentDetail.idMonthFK ) AS Mes, PaymentDetail.datDate AS Fecha, PaymentDetail.numPaid AS Pago, PaymentDetail.boolDeposited AS Estado, PaymentDetail.datDepositedDate AS FechaDeposito FROM ( PaymentDetail join ( select User.id AS id from User where User.boolStatus = 1 ) UserInner on ( PaymentDetail.idUserFK = UserInner.id ) ) WHERE PaymentDetail.idServiceFK = 3';
 
         // Datos de consulta SQL
         $data['values'] = DB::select($query);
+        // Datos para el combobox de años
+        $data['years'] = DB::select('SELECT DISTINCT(YEAR(datDate)) as "year" FROM PaymentDetail;');
         // Variables para la navbar
         $data['currentView'] = 'Histórico Disney+';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');

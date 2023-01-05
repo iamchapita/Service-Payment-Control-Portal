@@ -1,12 +1,11 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+@import url("https://fonts.bunny.net/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import 'bootstrap/scss/bootstrap';
-
+@import "bootstrap/scss/bootstrap";
 
 #cardContainer {
     margin-top: 5%;
@@ -15,25 +14,24 @@
 }
 
 #filterAndButton {
-    display: grid;
-    grid-auto-flow: column;
-}
-
-#searchInput {
-    margin-right: 10px;
-    max-width: 250px;
-    height: 35px;
+    width: 100%;
 }
 
 #insertButton {
-    margin-left: auto;
+    width: auto;
+    height: 35px;
+    float: right;
 }
 
-.alert-secondary{
+#yearFilterInput {
+    height: 35px;
+}
+
+.alert-secondary {
     max-width: 250px;
 }
 
-.loginPasswordForm{
+.loginPasswordForm {
     position: absolute;
     width: 50%;
     height: 50%;
@@ -42,9 +40,9 @@
     margin-right: 25%;
 }
 
-.btn-secondary, .btn-dark {
-    width: 120px;
-    height: 30px;
+.btn-secondary,
+.btn-dark {
+    width: 120;
 }
 
 .container {
@@ -63,16 +61,13 @@
     word-wrap: break-word;
 }
 
-.row {
-    margin: auto;
-}
-
-.submitButton{
+.submitButton {
     float: right;
 }
 
 table {
     text-align: center;
+    margin-top: 15px;
 }
 
 select:required:invalid {

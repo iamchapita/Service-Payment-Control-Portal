@@ -14,7 +14,7 @@ function searchFilter() {
     yearFilter = document.getElementById("yearFilterInput");
 
     filterValue = filter.value;
-    yearFilterValue = yearFilter.value;
+    yearFilterValue = yearFilter ? yearFilter.value : "";
 
     table = document.getElementById("table");
     tr = table.getElementsByTagName("tr");

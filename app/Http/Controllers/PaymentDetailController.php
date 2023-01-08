@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PaymentDetail;
+use Illuminate\Database\Console\Migrations\RefreshCommand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +15,7 @@ class PaymentDetailController extends Controller
     protected function validateData(Request $request)
     {
         // Estableciendo los nombres personalizados de los atributos
-        $customAttributes = array (
+        $customAttributes = array(
             'userInput' => 'Usuario',
             'serviceInput' => 'Servicio',
             'monthInput' => 'Mes',
@@ -157,19 +158,24 @@ class PaymentDetailController extends Controller
     public function userDetail(Request $request)
     {
 
-        // Obtiene el id del Usuario, obtenido desde el select
-        $id = $request->userSelect;
+        if ($request->userSelect) {
+            // Obtiene el id del Usuario, obtenido desde el select
+            $id = $request->userSelect;
 
-        $query = 'SELECT(select User.texName from User where User.id = PaymentDetail.idUserFK) AS Usuario, ( select Service.texName from Service where Service.id = PaymentDetail.idServiceFK ) AS Servicio, ( select Month.texName from Month where Month.id = PaymentDetail.idMonthFK ) AS Mes, PaymentDetail.datDate AS Fecha, PaymentDetail.numPaid AS Pago FROM ( PaymentDetail join ( select User.id AS id from User where User.boolStatus = 1 ) UserInner on ( PaymentDetail.idUserFK = UserInner.id ) ) WHERE UserInner.id = X AND YEAR(PaymentDetail.datDate) = YEAR(CURRENT_TIMESTAMP())';
+            $query = 'SELECT(select User.texName from User where User.id = PaymentDetail.idUserFK) AS Usuario, ( select Service.texName from Service where Service.id = PaymentDetail.idServiceFK ) AS Servicio, ( select Month.texName from Month where Month.id = PaymentDetail.idMonthFK ) AS Mes, PaymentDetail.datDate AS Fecha, PaymentDetail.numPaid AS Pago FROM ( PaymentDetail join ( select User.id AS id from User where User.boolStatus = 1 ) UserInner on ( PaymentDetail.idUserFK = UserInner.id ) ) WHERE UserInner.id = X AND YEAR(PaymentDetail.datDate) = YEAR(CURRENT_TIMESTAMP())';
 
-        // Reemplaza la X en la query por el id del usuario
-        $query = Str::replace('X', $id, $query);
-        // Datos de consulta SQL
-        $data['values'] = DB::select($query);
-        // Variable para la navbar
-        $data['currentView'] = 'Histórico de Pago';
+            // Reemplaza la X en la query por el id del usuario
+            $query = Str::replace('X', $id, $query);
+            // Datos de consulta SQL
+            $data['values'] = DB::select($query);
+            // Variable para la navbar
+            $data['currentView'] = 'Histórico de Pago';
 
-        return view('PaymentDetail.userDetailTable', $data);
+            return view('PaymentDetail.userDetailTable', $data);
+
+        }else{
+            return back();
+        }
     }
     /**
      * Show the form for creating a new resource.
@@ -211,7 +217,6 @@ class PaymentDetailController extends Controller
 
         if ($validator->fails()) {
             return redirect(route('CreatePaymentDetail'))->withErrors($validator);
-
         } else {
 
             // Desempaquetado de variables para introduccion en consulta sql
@@ -233,7 +238,6 @@ class PaymentDetailController extends Controller
 
             // Se redirecciona a la ruta especificada
             return redirect(route('PaymentDetail'));
-
         }
     }
 
@@ -293,7 +297,6 @@ class PaymentDetailController extends Controller
 
         if ($validator->fails()) {
             return redirect(route('CreatePaymentDetail'))->withErrors($validator);
-
         } else {
 
             // Desempaquetado de variables para introduccion en consulta sql
@@ -316,7 +319,6 @@ class PaymentDetailController extends Controller
             // Se redirecciona a la ruta especificada
             return redirect(route('PaymentDetail'));
         }
-
     }
 
     /**

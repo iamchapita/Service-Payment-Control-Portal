@@ -47,7 +47,7 @@ Route::prefix('/PaymentDetail')->group(function () {
     Route::get('/NetflixyDetail', [PaymentDetailController::class, 'netflixDetail'])->middleware('auth')->name('NetflixDetail');
     Route::get('/DisneyDetail', [PaymentDetailController::class, 'disneyDetail'])->middleware('auth')->name('DisneyDetail');
     Route::get('/Create', [PaymentDetailController::class, 'create'])->middleware('auth')->name('CreatePaymentDetail');
-    Route::post('/UserDetail', [PaymentDetailController::class, 'userDetail'])->name('UserDetail');
+    Route::match(['get', 'post'], '/UserDetail', [PaymentDetailController::class, 'userDetail'])->name('UserDetail');
     Route::post('/Insert', [PaymentDetailController::class, 'store'])->middleware('auth')->name('InsertPaymentDetail');
     Route::post('/{id}/edit', [PaymentDetailController::class, 'edit'])->middleware('auth')->name('EditPaymentDetail');
     Route::put('/{id}/update', [PaymentDetailController::class, 'update'])->middleware('auth')->name('UpdatePaymentDetail');

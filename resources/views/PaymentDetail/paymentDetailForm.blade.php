@@ -91,9 +91,23 @@
     </select>
 </div>
 
-<div class="input-group mb-3">
+<div
+    class="input-group mb-3"
+    @if(!isset($values))
+        hidden
+    @endif
+    id="dateField"
+
+    @if(isset($values))
+        @foreach($values as $value)
+            @if($value->boolDeposited == 0)
+                hidden
+            @endif
+        @endforeach
+    @endif
+>
     <label class="input-group-text" for="depositDateInput">Fecha de Depósito</label>
-    <input type="date" class="date form-control" name="depositDateInput" @if(isset($values)) @foreach($values as $value) value={{ $value->datDepositedDate }} @endforeach @endif id="depositDateInput" autocomplete="off">
+    <input type="date" class="date form-control" id="depositDateInput" name="depositDateInput" @if(isset($values)) @foreach($values as $value) value={{ $value->datDepositedDate }} @endforeach @endif id="depositDateInput" autocomplete="off">
 </div>
 
 <br>

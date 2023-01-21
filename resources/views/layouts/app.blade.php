@@ -92,5 +92,7 @@
     </main>
     </div>
 </body>
+@include('footer')
+
 
 </html>

@@ -30,7 +30,7 @@
                     </select>
                 </div>
             </div> -->
-            <div class="col-6">
+            <div class="col-12">
                 <button type="submit" class="submitButton btn btn-dark">{{ $action }}</button>
             </div>
         </form>

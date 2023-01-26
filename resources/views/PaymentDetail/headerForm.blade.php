@@ -19,7 +19,8 @@
             @csrf
             @include('PaymentDetail.paymentDetailForm')
 
-            <!-- <div class="col-6">
+            @isset($numRegisters)
+            <div class="col-6">
                 <div class="input-group">
                     <label class="input-group-text" for="registerInput">Registros a Insertar</label>
                     <select class="form-select" name="numRegisters" id="numRegisters" autocomplete="off"
@@ -29,8 +30,10 @@
                             @endfor
                     </select>
                 </div>
-            </div> -->
-            <div class="col-12">
+            </div>
+            @endisset
+
+            <div class="col-md-12">
                 <button type="submit" class="submitButton btn btn-dark">{{ $action }}</button>
             </div>
         </form>

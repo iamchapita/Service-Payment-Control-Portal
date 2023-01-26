@@ -9,11 +9,16 @@
 function searchFilter() {
     // Se declaran las variables utilizadas para el proceso de filtrado
     var filter, yearFilter, yearFilterValue, table, tr;
+    var trText;
 
     filter = document.getElementById("searchInput");
     yearFilter = document.getElementById("yearFilterInput");
 
-    filterValue = filter.value;
+    // Normalizando la cadena, quitando simbolos diacriticos
+    filterValue = String(filter.value)
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
     yearFilterValue = yearFilter ? yearFilter.value : "";
 
     table = document.getElementById("table");
@@ -21,11 +26,16 @@ function searchFilter() {
 
     // Se recorren todos los tr de la tabla
     for (var i = 1; i < tr.length; i++) {
+        trText = String(tr[i].textContent)
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
 
-        // Se comprueba que la cadena a filtrar esta incluida en el elemento iterado
-        if (tr[i].textContent.indexOf(filterValue) > -1 && tr[i].textContent.indexOf(yearFilterValue) > -1) {
+        if (
+            trText.indexOf(filterValue) > -1 &&
+            trText.indexOf(yearFilterValue) > -1
+        ) {
             tr[i].style.display = "";
-        // Se oculta si la cadena a filtrar no esta incluida en el elemento iterado
+            // Se oculta si la cadena a filtrar no esta incluida en el elemento iterado
         } else {
             tr[i].style.display = "none";
         }

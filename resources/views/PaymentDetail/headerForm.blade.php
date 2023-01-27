@@ -18,21 +18,6 @@
             @endif
             @csrf
             @include('PaymentDetail.paymentDetailForm')
-
-            @isset($numRegisters)
-            <div class="col-6">
-                <div class="input-group">
-                    <label class="input-group-text" for="registerInput">Registros a Insertar</label>
-                    <select class="form-select" name="numRegisters" id="numRegisters" autocomplete="off"
-                    onchange="addForms()">
-                        <option selected value="1">Seleccione un valor</option>
-                        @for ($i = 2; $i <= $numRegisters; $i++) <option value="{{ $i }}">{{ $i }}</option>
-                            @endfor
-                    </select>
-                </div>
-            </div>
-            @endisset
-
             <div class="col-md-12">
                 <button type="submit" class="submitButton btn btn-dark">{{ $action }}</button>
             </div>

@@ -10,7 +10,7 @@
     @endisset
     @if(isset($values))
     @foreach ($values as $value)
-    <form method="POST" action="{{ route($formURL, $value->id) }}" enctype="multipart/form-data">
+    <form method="POST" class="row g-3 align-items-center" action="{{ route($formURL, $value->id) }}" enctype="multipart/form-data">
         @method('PUT')
         @endforeach
         @else

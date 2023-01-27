@@ -67,13 +67,13 @@
         <input type="date" class="date form-control" name="payDateInput" id="payDateInput" @if(isset($values)) @foreach($values as $value) value={{ $value->datDate }} @endforeach @endif required autocomplete="off">
     </div>
 </div>
-<div class="col-md-6">
+<div class="col-md-6 col-xl-4">
     <div class="input-group mb-3">
         <label class="input-group-text" for="moneyAmountInput">Cuota</label>
         <input type="number" class="form-control" name="moneyAmountInput" id="moneyAmountInput" @if(isset($values)) @foreach($values as $value) value={{ $value->numPaid }} @endforeach @endif required autocomplete="off">
     </div>
 </div>
-<div class="col-md-6">
+<div class="col-md-6 col-xl-4">
     <div class="input-group mb-3">
         <label class="input-group-text" for="depositStatus">Estado del Depósito</label>
         <select class="form-select" name="depositStatus" id="depositStatus" required autocomplete="off" onchange="checkDepositeStatus()">
@@ -97,14 +97,13 @@
         </select>
     </div>
 </div>
-<div class="col-md-12">
-    <div class="input-group mb-3" @if(!isset($values)) hidden @endif id="dateField" @if(isset($values)) @foreach($values as $value) @if($value->boolDeposited == 0)
-        hidden
+<div class="col-md-12 col-xl-4">
+    <div class="input-group mb-3" id="dateField">
+        <label class="input-group-text" for="depositDateInput">Fecha de Depósito</label>
+        <input type="date" @if(!isset($values)) disabled @endif @if(isset($values)) @foreach($values as $value) @if($value->boolDeposited == 0)
+        disabled
         @endif
         @endforeach
-        @endif
-        >
-        <label class="input-group-text" for="depositDateInput">Fecha de Depósito</label>
-        <input type="date" class="date form-control" id="depositDateInput" name="depositDateInput" @if(isset($values)) @foreach($values as $value) value={{ $value->datDepositedDate }} @endforeach @endif id="depositDateInput" autocomplete="off">
+        @endif class="date form-control" id="depositDateInput" name="depositDateInput" @if(isset($values)) @foreach($values as $value) value={{ $value->datDepositedDate }} @endforeach @endif id="depositDateInput" autocomplete="off">
     </div>
 </div>

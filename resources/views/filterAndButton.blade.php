@@ -16,7 +16,7 @@
                             <select class="form-select" name="numRegisters" id="numRegisters" autocomplete="off" required>
                                 <option value="" selected>Seleccione un Valor</option>
                                 @isset($numRegisters)
-                                @for ($i = 2; $i <= $numRegisters; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                @for ($i = 1; $i <= $numRegisters; $i++) <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
                                     @endisset
                             </select>

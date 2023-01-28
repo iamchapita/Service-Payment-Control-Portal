@@ -1,5 +1,6 @@
 @isset( $inputsName )
 @foreach ($inputsName as $inputName)
+<br>
 <h3>Registro No.{{ $inputName }}</h3>
 <div class="col-md-6 col-xl-3">
     <div class="input-group mb-3">
@@ -110,7 +111,6 @@
         @endif class="date form-control" id="depositDateInput{{ $inputName }}" name="depositDateInput{{ $inputName }}" @if(isset($values)) @foreach($values as $value) value={{ $value->datDepositedDate }} @endforeach @endif autocomplete="off">
     </div>
 </div>
-<br>
 @endforeach
 @else
 

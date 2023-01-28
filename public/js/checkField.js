@@ -7,9 +7,13 @@
 
 /* Obtiene el select de estado de deposito y segun su valor establece
 la propiedad disabled a la fecha de deposito */
-function checkDepositeStatus() {
-    var select = document.getElementById("depositStatus");
-    var date = document.getElementById("depositDateInput");
+function checkDepositeStatus(num) {
+    var select = document.getElementById("depositStatus"+ num);
+    var date = document.getElementById("depositDateInput"+ num);
+
+
+    console.log(select);
+    console.log(date);
 
     if (!select.value || select.value == "0") {
         date.value = "";

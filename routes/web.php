@@ -33,7 +33,7 @@ Route::get('/Dashboard', function () {
 
 // Rutas Personalizadas
 
-Route::prefix('/User')->group(function (){
+Route::prefix('/User')->group(function () {
     Route::get('/', [UserController::class, 'index'])->middleware('auth')->name('User');
     Route::get('/Create', [UserController::class, 'create'])->middleware('auth')->name('CreateUser');
     Route::post('/Insert', [UserController::class, 'store'])->middleware('auth')->name('InsertUser');
@@ -46,7 +46,7 @@ Route::prefix('/PaymentDetail')->group(function () {
     Route::get('/SpotifyDetail', [PaymentDetailController::class, 'spotifyDetail'])->middleware('auth')->name('SpotifyDetail');
     Route::get('/NetflixyDetail', [PaymentDetailController::class, 'netflixDetail'])->middleware('auth')->name('NetflixDetail');
     Route::get('/DisneyDetail', [PaymentDetailController::class, 'disneyDetail'])->middleware('auth')->name('DisneyDetail');
-    Route::get('/Create', [PaymentDetailController::class, 'create'])->middleware('auth')->name('CreatePaymentDetail');
+    Route::match(['get', 'post'], '/Create', [PaymentDetailController::class, 'create'])->middleware('auth')->name('CreatePaymentDetail');
     Route::match(['get', 'post'], '/UserDetail', [PaymentDetailController::class, 'userDetail'])->name('UserDetail');
     Route::post('/Insert', [PaymentDetailController::class, 'store'])->middleware('auth')->name('InsertPaymentDetail');
     Route::post('/{id}/edit', [PaymentDetailController::class, 'edit'])->middleware('auth')->name('EditPaymentDetail');

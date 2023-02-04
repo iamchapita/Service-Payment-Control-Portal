@@ -18,9 +18,14 @@
             @endif
             @csrf
             @include('PaymentDetail.paymentDetailForm')
-            <div class="col-md-12">
+            <input type="hidden" name="rows" value="{{ $inputsName}}">
+            <div class="col-md-10">
+                <button type="submit" class="submitButton btn btn-secondary">Limpiar</button>
+            </div>
+            <div class="col-md-2">
                 <button type="submit" class="submitButton btn btn-dark">{{ $action }}</button>
             </div>
+
         </form>
 </div>
 

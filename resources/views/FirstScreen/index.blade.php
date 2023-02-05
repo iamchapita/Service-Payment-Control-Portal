@@ -24,7 +24,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-dark">Aceptar</button>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearSelect('userSelect');">Cerrar</button>
+                            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </form>
                 </div>

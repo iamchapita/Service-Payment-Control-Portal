@@ -20,7 +20,7 @@
             @include('PaymentDetail.paymentDetailForm')
             <input type="hidden" name="rows" value="{{ $inputsName}}">
             <div class="col-md-10">
-                <button type="submit" class="submitButton btn btn-secondary">Limpiar</button>
+                <button type="reset" class="submitButton btn btn-secondary" onclick="disableDepositDateInput()">Limpiar</button>
             </div>
             <div class="col-md-2">
                 <button type="submit" class="submitButton btn btn-dark">{{ $action }}</button>

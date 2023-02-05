@@ -6,7 +6,9 @@
 */
 
 // Limpia el valor del select cuando se cierra el modal pero no se recarga la pagina
-function clearSelect() {
-    var select = document.getElementsByTagName("select");
-    select[0].value = "Seleccione su Nombre";
+function clearSelect(id) {
+    // Se obtienen las options
+    var options = document.getElementById(id);
+    // Se asigna el valor del select al option con el value=''
+    options.value = '';
 }

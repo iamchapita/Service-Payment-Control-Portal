@@ -24,8 +24,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearSelect();">Cerrar</button>
                         <button type="submit" class="btn btn-dark">Aceptar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearSelect('numRegisters');">Cerrar</button>
                     </div>
                 </form>
             </div>

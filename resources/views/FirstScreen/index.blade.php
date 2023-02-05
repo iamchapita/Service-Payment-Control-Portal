@@ -13,18 +13,18 @@
                         @csrf
                         <div class="col-md">
                             <div class="form-floating">
-                                <select name="userSelect" class="form-select" id="floatingSelectGrid" autocomplete="off" required>
+                                <select name="userSelect" class="form-select" id="userSelect" autocomplete="off" required>
                                     <option value="" selected>Seleccione su Nombre</option>
                                     @foreach( $values as $value)
                                     <option value="{{$value->id}}">{{ $value->texName }}</option>
                                     @endforeach
                                 </select>
-                                <label for="floatingSelectGrid">Identifquese</label>
+                                <label for="userSelect">Identifquese</label>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearSelect();">Cerrar</button>
                             <button type="submit" class="btn btn-dark">Aceptar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clearSelect('userSelect');">Cerrar</button>
                         </div>
                     </form>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PaymentDetail;
 use Illuminate\Database\Console\Migrations\RefreshCommand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -12,32 +13,37 @@ use Illuminate\Support\Str;
 class PaymentDetailController extends Controller
 {
 
-    protected function validateData(Request $request)
+    protected function validateData($request)
     {
+        // Extrayendo las llaves del arreglo de campos a validar
+        $keys = array_keys($request);
+
         // Estableciendo los nombres personalizados de los atributos
         $customAttributes = array(
-            'userInput' => 'Usuario',
-            'serviceInput' => 'Servicio',
-            'monthInput' => 'Mes',
-            'moneyAmountInput' => 'Cuota',
-            'payDateInput' => 'Fecha de Pago',
-            'depositStatus' => 'Estado del Depósito',
-            'depositDateInput' => 'Fecha de Depósito'
+            $keys[0] => 'Usuario',
+            $keys[1] => 'Servicio',
+            $keys[2] => 'Mes',
+            $keys[3] => 'Fecha de Pago',
+            $keys[4] => 'Cuota',
+            $keys[5] => 'Estado del Depósito'
         );
-
-        // Excluyendo el token de los campos a validar
-        $fields = $request->except('_token');
 
         // Estableciendo reglas de cada campo respectivamente
         $rules = array(
-            'userInput' => ['required', 'numeric'],
-            'serviceInput' => ['required', 'numeric'],
-            'monthInput' => ['required', 'numeric'],
-            'moneyAmountInput' => ['required', 'numeric'],
-            'payDateInput' => ['required', 'date'],
-            'depositStatus' => ['required', 'numeric'],
-            'depositDateInput' => ['nullable', 'date']
+            $keys[0] => ['required', 'numeric'],
+            $keys[1] => ['required', 'numeric'],
+            $keys[2] => ['required', 'numeric'],
+            $keys[3] => ['required', 'date'],
+            $keys[4] => ['required', 'numeric'],
+            $keys[5] => ['required', 'numeric']
         );
+
+        // Si el campo depositDateInput contiene datos
+        if (count($keys) == 7) {
+
+            $customAttributes[$keys[6]] = 'Fecha del Depósito';
+            $rules[$keys[3]] = ['required', 'date'];
+        }
 
         // Mensajes personalizados para los errores
         $messages = array(
@@ -46,8 +52,13 @@ class PaymentDetailController extends Controller
             'date' => 'El campo :attribute es de tipo fecha.'
         );
 
-        // Validando los datos
-        $validator = Validator::make($fields, $rules, $messages);
+        /*
+        Validando los datos
+        $fields -> Campos del formulario.
+        $rules -> Reglas para validar campos.
+        $messages -> Mensajes personalizados para mostrar en caso de error.
+         */
+        $validator = Validator::make($request, $rules, $messages);
 
         // Estableciendo los nombres de los atributos
         $validator->setAttributeNames($customAttributes);
@@ -75,6 +86,8 @@ class PaymentDetailController extends Controller
         $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
         $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
         $data['insertURL'] = 'CreatePaymentDetail';
+        // Numero maximo de registros a la vez
+        $data['numRegisters'] = 12;
 
         return view('PaymentDetail.historicalTable', $data);
     }
@@ -100,6 +113,8 @@ class PaymentDetailController extends Controller
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
         $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
         $data['insertURL'] = 'CreatePaymentDetail';
+        // Numero maximo de registros a la vez
+        $data['numRegisters'] = 12;
 
         return view('PaymentDetail.historicalTable', $data);
     }
@@ -123,6 +138,8 @@ class PaymentDetailController extends Controller
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
         $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
         $data['insertURL'] = 'CreatePaymentDetail';
+        // Numero maximo de registros a la vez
+        $data['numRegisters'] = 12;
 
         return view('PaymentDetail.historicalTable', $data);
     }
@@ -146,6 +163,8 @@ class PaymentDetailController extends Controller
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
         $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
         $data['insertURL'] = 'CreatePaymentDetail';
+        // Numero maximo de registros a la vez
+        $data['numRegisters'] = 12;
 
         return view('PaymentDetail.historicalTable', $data);
     }
@@ -172,8 +191,7 @@ class PaymentDetailController extends Controller
             $data['currentView'] = 'Histórico de Pago';
 
             return view('PaymentDetail.userDetailTable', $data);
-
-        }else{
+        } else {
             return back();
         }
     }
@@ -182,24 +200,31 @@ class PaymentDetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        // Variables para la navbar
-        $data['currentView'] = 'Create PaymentDetail';
-        $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
-        $data['formURL'] = 'InsertPaymentDetail';
-        $data['title'] = 'Insertar Nuevo Registro en PaymentDetail';
+        $rows = $request->numRegisters;
 
-        // Datos para los campos del form
-        $data['users'] = DB::select('SELECT id, texName FROM User WHERE boolStatus = ? AND boolAdminStatus = ?', [1, 0]);
-        $data['services'] = DB::select('SELECT id, texName FROM Service');
-        $data['months'] = DB::select('SELECT id, texName FROM Month ORDER BY id');
-        $data['depositState'] = array('Pendiente', 'Depósito Realizado');
-        $data['action'] = 'Insertar';
+        if ($rows >= 1 && $rows <= 12) {
+            // Variables para la navbar
+            $data['currentView'] = 'Create PaymentDetail';
+            $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
+            $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
+            $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
+            $data['formURL'] = 'InsertPaymentDetail';
+            $data['title'] = 'Insertar Nuevo Registro en PaymentDetail';
 
-        return view('PaymentDetail.headerForm', $data);
+            // Datos para los campos del form
+            $data['users'] = DB::select('SELECT id, texName FROM User WHERE boolStatus = ? AND boolAdminStatus = ?', [1, 0]);
+            $data['services'] = DB::select('SELECT id, texName FROM Service');
+            $data['months'] = DB::select('SELECT id, texName FROM Month ORDER BY id');
+            $data['depositState'] = array('Pendiente', 'Depósito Realizado');
+            $data['action'] = 'Insertar';
+            $data['inputsName'] = $rows;
+
+            return view('PaymentDetail.headerForm', $data);
+        } else {
+            return back();
+        }
     }
 
     /**
@@ -210,35 +235,42 @@ class PaymentDetailController extends Controller
      */
     public function store(Request $request)
     {
-        // Validando los datos recibidos del formulario
-        $validator = PaymentDetailController::validateData($request);
-        // Exclusion del toke CSRF
-        $fields = $request->except('_token');
+        // Extraccion de numero de registros a insertar
+        $rows = $request->rows;
 
-        if ($validator->fails()) {
-            return redirect(route('CreatePaymentDetail'))->withErrors($validator);
-        } else {
+        for ($i = 1; $i <= $rows; $i++) {
+
+            // Extraccion de campos a validar
+            $fields = $request->only("userInput" . $i, "serviceInput" . $i, "monthInput" . $i, "payDateInput" . $i, "moneyAmountInput" . $i, "depositStatus" . $i, "depositDateInput" . $i);
+
+            // Validando campos
+            $validator = PaymentDetailController::validateData($fields);
+
+            // Comprobando la validacion
+            if ($validator->fails()) {
+                return redirect(route('CreatePaymentDetail'))->withErrors($validator);
+            }
 
             // Desempaquetado de variables para introduccion en consulta sql
-            $idUserFK = $fields['userInput'];
-            $idServiceFK = $fields['serviceInput'];
-            $idMonthFK = $fields['monthInput'];
-            $numPaid = $fields['moneyAmountInput'];
-            $datDate = $fields['payDateInput'];
-            $boolDeposited = $fields['depositStatus'];
+            $idUserFK = $fields['userInput'.$i];
+            $idServiceFK = $fields['serviceInput'.$i];
+            $idMonthFK = $fields['monthInput'.$i];
+            $numPaid = $fields['moneyAmountInput'.$i];
+            $datDate = $fields['payDateInput'.$i];
+            $boolDeposited = $fields['depositStatus'.$i];
 
             // Comprobando que la fecha de Depósito se ingreso o no
-            if (key_exists('depositDateInput', $fields)) {
-                $datDepositedDate = $fields['depositDateInput'];
+            if (key_exists('depositDateInput'.$i, $fields)) {
+                $datDepositedDate = $fields['depositDateInput'.$i];
             } else {
                 $datDepositedDate = null;
             }
 
             DB::insert('INSERT INTO PaymentDetail (idUserFK, idServiceFK, idMonthFK, numPaid, datDate, boolDeposited, datDepositedDate) values (?, ?, ? , ?, ?, ?, ?)', [$idUserFK, $idServiceFK, $idMonthFK, $numPaid, $datDate, $boolDeposited, $datDepositedDate]);
-
-            // Se redirecciona a la ruta especificada
-            return redirect(route('PaymentDetail'));
         }
+
+        // Se redirecciona a la ruta especificada
+        return redirect(route('PaymentDetail'));
     }
 
     /**

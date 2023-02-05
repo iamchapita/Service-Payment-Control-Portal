@@ -18,8 +18,8 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <script src="{{asset('js/filter.js')}}"></script>
-    <script src="{{asset('js/clearSelect.js')}}"></script>
     <script src="{{asset('js/checkField.js')}}"></script>
+    <script src="{{asset('js/disableDepositDateInput.js')}}"></script>
 </head>
 
 <body>

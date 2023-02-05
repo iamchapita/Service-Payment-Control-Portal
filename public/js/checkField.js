@@ -11,10 +11,6 @@ function checkDepositeStatus(num) {
     var select = document.getElementById("depositStatus"+ num);
     var date = document.getElementById("depositDateInput"+ num);
 
-
-    console.log(select);
-    console.log(date);
-
     if (!select.value || select.value == "0") {
         date.value = "";
         date.setAttribute("disabled", "");

@@ -18,7 +18,9 @@
             @endif
             @csrf
             @include('PaymentDetail.paymentDetailForm')
-            <input type="hidden" name="rows" value="{{ $inputsName}}">
+            @isset($inputsName)
+            <input type="hidden" name="rows" value="{{ $inputsName }}">
+            @endisset
             <div class="col-md-10">
                 <button type="reset" class="submitButton btn btn-secondary" onclick="disableDepositDateInput()">Limpiar</button>
             </div>

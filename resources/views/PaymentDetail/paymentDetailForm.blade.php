@@ -191,7 +191,7 @@
     <div class="col-md-6 col-xl-4">
         <div class="input-group mb-3">
             <label class="input-group-text" for="depositStatus1">Estado del Depósito</label>
-            <select class="form-select" name="depositStatus1" id="depositStatus1" required autocomplete="off" onchange="checkDepositeStatus()">
+            <select class="form-select" name="depositStatus1" id="depositStatus1" required autocomplete="off" onchange="checkDepositeStatus(1)">
                 <option value="">Seleccione el Estado</option>
                 <option value="0" @if(isset($values)) @foreach($values as $value) @if($value->boolDeposited == 0)
                     selected

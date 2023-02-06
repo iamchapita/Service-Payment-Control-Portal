@@ -49,7 +49,7 @@ Route::prefix('/PaymentDetail')->group(function () {
     Route::match(['get', 'post'], '/Create', [PaymentDetailController::class, 'create'])->middleware('auth')->name('CreatePaymentDetail');
     Route::match(['get', 'post'], '/UserDetail', [PaymentDetailController::class, 'userDetail'])->name('UserDetail');
     Route::post('/Insert', [PaymentDetailController::class, 'store'])->middleware('auth')->name('InsertPaymentDetail');
-    Route::post('/{id}/edit', [PaymentDetailController::class, 'edit'])->middleware('auth')->name('EditPaymentDetail');
+    Route::match(['get', 'post'],'/{id}/edit', [PaymentDetailController::class, 'edit'])->middleware('auth')->name('EditPaymentDetail');
     Route::put('/{id}/update', [PaymentDetailController::class, 'update'])->middleware('auth')->name('UpdatePaymentDetail');
     Route::delete('/{id}/delete', [PaymentDetailController::class, 'destroy'])->middleware('auth')->name('DestroyPaymentDetail');
 });

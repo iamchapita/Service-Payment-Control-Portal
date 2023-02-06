@@ -13,8 +13,14 @@ use Illuminate\Support\Str;
 class PaymentDetailController extends Controller
 {
 
+
+
     protected function validateData($request)
     {
+
+        $users = DB::table('User')->count();
+        $services = DB::table('Service')->count();
+
         // Extrayendo las llaves del arreglo de campos a validar
         $keys = array_keys($request);
 
@@ -30,12 +36,12 @@ class PaymentDetailController extends Controller
 
         // Estableciendo reglas de cada campo respectivamente
         $rules = array(
-            $keys[0] => ['required', 'numeric'],
-            $keys[1] => ['required', 'numeric'],
-            $keys[2] => ['required', 'numeric'],
+            $keys[0] => ['required', 'numeric', 'min:1', 'max:' . $users],
+            $keys[1] => ['required', 'numeric', 'min:1', 'max:' . $services],
+            $keys[2] => ['required', 'numeric', 'min:1', 'max:12'],
             $keys[3] => ['required', 'date'],
-            $keys[4] => ['required', 'numeric'],
-            $keys[5] => ['required', 'numeric']
+            $keys[4] => ['required', 'numeric', 'min:1'],
+            $keys[5] => ['required', 'numeric', 'min:0', 'max:1']
         );
 
         // Si el campo depositDateInput contiene datos
@@ -49,7 +55,9 @@ class PaymentDetailController extends Controller
         $messages = array(
             'required' => 'El campo :attribute es requerido.',
             'numeric' => 'El campo :attribute es de tipo numerico',
-            'date' => 'El campo :attribute es de tipo fecha.'
+            'date' => 'El campo :attribute es de tipo fecha.',
+            'min' => 'El campo :attribute está fuera de rango.',
+            'max' => 'El campo :attribute está fuera de rango.'
         );
 
         /*
@@ -248,20 +256,20 @@ class PaymentDetailController extends Controller
 
             // Comprobando la validacion
             if ($validator->fails()) {
-                return redirect(route('CreatePaymentDetail'))->withErrors($validator);
+                return redirect()->back()->withErrors($validator);
             }
 
             // Desempaquetado de variables para introduccion en consulta sql
-            $idUserFK = $fields['userInput'.$i];
-            $idServiceFK = $fields['serviceInput'.$i];
-            $idMonthFK = $fields['monthInput'.$i];
-            $numPaid = $fields['moneyAmountInput'.$i];
-            $datDate = $fields['payDateInput'.$i];
-            $boolDeposited = $fields['depositStatus'.$i];
+            $idUserFK = $fields['userInput' . $i];
+            $idServiceFK = $fields['serviceInput' . $i];
+            $idMonthFK = $fields['monthInput' . $i];
+            $numPaid = $fields['moneyAmountInput' . $i];
+            $datDate = $fields['payDateInput' . $i];
+            $boolDeposited = $fields['depositStatus' . $i];
 
             // Comprobando que la fecha de Depósito se ingreso o no
-            if (key_exists('depositDateInput'.$i, $fields)) {
-                $datDepositedDate = $fields['depositDateInput'.$i];
+            if (key_exists('depositDateInput' . $i, $fields)) {
+                $datDepositedDate = $fields['depositDateInput' . $i];
             } else {
                 $datDepositedDate = null;
             }
@@ -322,26 +330,27 @@ class PaymentDetailController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        // Validando los datos recibidos del formulario
-        $validator = PaymentDetailController::validateData($request);
+
         // Exclusion del toke CSRF
-        $fields = $request->except('_token');
+        $fields = $request->except('_token', '_method');
+        // Validando los datos recibidos del formulario
+        $validator = PaymentDetailController::validateData($fields);
 
         if ($validator->fails()) {
-            return redirect(route('CreatePaymentDetail'))->withErrors($validator);
+            return redirect()->back()->withErrors($validator);
         } else {
 
             // Desempaquetado de variables para introduccion en consulta sql
-            $idUserFK = $fields['userInput'];
-            $idServiceFK = $fields['serviceInput'];
-            $idMonthFK = $fields['monthInput'];
-            $numPaid = $fields['moneyAmountInput'];
-            $datDate = $fields['payDateInput'];
-            $boolDeposited = $fields['depositStatus'];
+            $idUserFK = $fields['userInput1'];
+            $idServiceFK = $fields['serviceInput1'];
+            $idMonthFK = $fields['monthInput1'];
+            $numPaid = $fields['moneyAmountInput1'];
+            $datDate = $fields['payDateInput1'];
+            $boolDeposited = $fields['depositStatus1'];
 
             // Comprobando que la fecha de Depósito se ingreso o no
-            if (key_exists('depositDateInput', $fields)) {
-                $datDepositedDate = $fields['depositDateInput'];
+            if (key_exists('depositDateInput1', $fields)) {
+                $datDepositedDate = $fields['depositDateInput1'];
             } else {
                 $datDepositedDate = null;
             }

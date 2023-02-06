@@ -14,7 +14,7 @@
         @method('PUT')
         @endforeach
         @else
-        <form class="row g-3 align-items-center" method="POST" action="{{ route($formURL) }}" enctype="multipart/form-data">
+        <form method="POST" class="row g-3 align-items-center" action="{{ route($formURL) }}" enctype="multipart/form-data">
             @endif
             @csrf
             @include('PaymentDetail.paymentDetailForm')
@@ -27,7 +27,6 @@
             <div class="col-md-2">
                 <button type="submit" class="submitButton btn btn-dark">{{ $action }}</button>
             </div>
-
         </form>
 </div>
 

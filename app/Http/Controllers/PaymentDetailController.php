@@ -3,21 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\PaymentDetail;
-use Illuminate\Database\Console\Migrations\RefreshCommand;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
+use Whoops\Run;
 
 class PaymentDetailController extends Controller
 {
 
     protected function validateData($request)
     {
+        // Obteniendo el id de los usuarios
+        $users = DB::table('User')->where('boolStatus', '=', '1')->get('id');
+        $usersId = [];
 
-        $users = DB::table('User')->count();
-        $services = DB::table('Service')->count();
+        foreach($users as $user => $value) {
+            array_push($usersId, $value->id);
+        }
+
+        // Obteniendo el id de los servicios
+        $services = DB::table('Service')->get('id');
+        $servicesId = [];
+
+        foreach($services as $service => $value) {
+            array_push($servicesId, $value->id);
+        }
 
         // Extrayendo las llaves del arreglo de campos a validar
         $keys = array_keys($request);
@@ -34,8 +46,8 @@ class PaymentDetailController extends Controller
 
         // Estableciendo reglas de cada campo respectivamente
         $rules = array(
-            $keys[0] => ['required', 'numeric', 'min:1', 'max:' . $users],
-            $keys[1] => ['required', 'numeric', 'min:1', 'max:' . $services],
+            $keys[0] => ['required', 'numeric', Rule::in($usersId)],
+            $keys[1] => ['required', 'numeric', Rule::in($servicesId)],
             $keys[2] => ['required', 'numeric', 'min:1', 'max:12'],
             $keys[3] => ['required', 'date'],
             $keys[4] => ['required', 'numeric', 'min:1'],

@@ -13,8 +13,6 @@ use Illuminate\Support\Str;
 class PaymentDetailController extends Controller
 {
 
-
-
     protected function validateData($request)
     {
 
@@ -48,7 +46,7 @@ class PaymentDetailController extends Controller
         if (count($keys) == 7) {
 
             $customAttributes[$keys[6]] = 'Fecha del Depósito';
-            $rules[$keys[3]] = ['required', 'date'];
+            $rules[$keys[6]] = ['required', 'date'];
         }
 
         // Mensajes personalizados para los errores
@@ -256,7 +254,7 @@ class PaymentDetailController extends Controller
 
             // Comprobando la validacion
             if ($validator->fails()) {
-                return redirect()->back()->withErrors($validator);
+                return back()->withErrors($validator);
             }
 
             // Desempaquetado de variables para introduccion en consulta sql

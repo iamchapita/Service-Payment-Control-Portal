@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+@if($errors->any())
+{!! implode('', $errors->all('<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    :message
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>')) !!}
+@endif
 <div class='container'>
     @include('filterAndButton')
     <div class="table-responsive">

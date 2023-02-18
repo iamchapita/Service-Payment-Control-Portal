@@ -229,7 +229,7 @@ class PaymentDetailController extends Controller
 
             return view('PaymentDetail.headerForm', $data);
         } else {
-            return back();
+            return redirect(route('PaymentDetail'));
         }
     }
 
@@ -243,6 +243,8 @@ class PaymentDetailController extends Controller
     {
         // Extraccion de numero de registros a insertar
         $rows = $request->rows;
+        // Contenedor de los errores del formulario
+        $errors = null;
 
         for ($i = 1; $i <= $rows; $i++) {
 
@@ -254,7 +256,7 @@ class PaymentDetailController extends Controller
 
             // Comprobando la validacion
             if ($validator->fails()) {
-                return back()->withErrors($validator);
+                $errors = $validator->errors()->all();
             }
 
             // Desempaquetado de variables para introduccion en consulta sql
@@ -274,9 +276,8 @@ class PaymentDetailController extends Controller
 
             DB::insert('INSERT INTO PaymentDetail (idUserFK, idServiceFK, idMonthFK, numPaid, datDate, boolDeposited, datDepositedDate) values (?, ?, ? , ?, ?, ?, ?)', [$idUserFK, $idServiceFK, $idMonthFK, $numPaid, $datDate, $boolDeposited, $datDepositedDate]);
         }
-
         // Se redirecciona a la ruta especificada
-        return redirect(route('PaymentDetail'));
+        return redirect(route('PaymentDetail'))->withErrors($errors);
     }
 
     /**

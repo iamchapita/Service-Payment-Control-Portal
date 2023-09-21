@@ -4,7 +4,7 @@
 # the PHP version from the user (wherever `flyctl launch` is run)
 # Valid version values are PHP 7.4+
 ARG PHP_VERSION=8.2
-ARG NODE_VERSION=14
+ARG NODE_VERSION=18
 FROM fideloper/fly-laravel:${PHP_VERSION} as base
 
 # PHP_VERSION needs to be repeated here
@@ -18,9 +18,9 @@ COPY . /var/www/html
 
 RUN composer install --optimize-autoloader --no-dev \
     && mkdir -p storage/logs \
-    # && php artisan optimize:clear \
-    # && chown -R www-data:www-data /var/www/html \
-    # && sed -i 's/protected \$proxies/protected \$proxies = "*"/g' app/Http/Middleware/TrustProxies.php \
+    && php artisan optimize:clear \
+    && chown -R www-data:www-data /var/www/html \
+    && sed -i 's/protected \$proxies/protected \$proxies = "*"/g' app/Http/Middleware/TrustProxies.php \
     && echo "MAILTO=\"\"\n* * * * * www-data /usr/bin/php /var/www/html/artisan schedule:run" > /etc/cron.d/laravel \
     && cp .fly/entrypoint.sh /entrypoint \
     && chmod +x /entrypoint
@@ -55,22 +55,19 @@ COPY --from=base /var/www/html/vendor /app/vendor
 # lock file we might find. Defaults to
 # NPM if no lock file is found.
 # Note: We run "production" for Mix and "build" for Vite
-COPY package.json .
-RUN npm i
-RUN npm install -g npm
-COPY . .
-## EXPOSE [Port you mentioned in the vite.config file]
-EXPOSE 5173
-CMD ["npm", "run", "dev"]
 RUN if [ -f "vite.config.js" ]; then \
         ASSET_CMD="build"; \
     else \
         ASSET_CMD="production"; \
     fi; \
-    # if [ -f "yarn.lock" ]; then \
-    #     yarn install --frozen-lockfile; \
-    #     yarn $ASSET_CMD; \
-    if [ -f "package-lock.json" ]; then \
+    if [ -f "yarn.lock" ]; then \
+        yarn install --frozen-lockfile; \
+        yarn $ASSET_CMD; \
+    elif [ -f "pnpm-lock.yaml" ]; then \
+        corepack enable && corepack prepare pnpm@latest-7 --activate; \
+        pnpm install --frozen-lockfile; \
+        pnpm run $ASSET_CMD; \
+    elif [ -f "package-lock.json" ]; then \
         npm ci --no-audit; \
         npm run $ASSET_CMD; \
     else \

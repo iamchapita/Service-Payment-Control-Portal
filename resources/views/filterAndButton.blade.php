@@ -1,7 +1,8 @@
 <h1>{{ $currentView }}</h1>
 <br>
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" tabindex="-1" aria-labelledby="staticBackdropLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,12 +14,14 @@
                     @csrf
                     <div class="col-md">
                         <div class="form-floating">
-                            <select class="form-select" name="numRegisters" id="numRegisters" autocomplete="off" required>
+                            <select class="form-select" name="numRegisters" id="numRegisters" autocomplete="off"
+                                required>
                                 <option value="" selected>Seleccione un Valor</option>
                                 @isset($numRegisters)
-                                @for ($i = 1; $i <= $numRegisters; $i++) <option value="{{ $i }}">{{ $i }}</option>
+                                    @for ($i = 1; $i <= $numRegisters; $i++)
+                                        <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
-                                    @endisset
+                                @endisset
                             </select>
                             <label for="floatingSelectGrid">Seleccione la cantidad de Registros a Insertar</label>
                         </div>
@@ -38,21 +41,27 @@
         <div class="col-md-6 col-xl-6">
             <div class="input-group">
                 <label class="input-group-text">Filtro</label>
-                <input type="text" class="form-control" id="searchInput" autocomplete="off" placeholder="Filtrar" aria-label="Search" aria-describedby="basic-addon1" oninput="searchFilter()">
+                <input type="text" class="form-control" id="searchInput" autocomplete="off" placeholder="Filtrar"
+                    aria-label="Search" aria-describedby="basic-addon1" oninput="searchFilter()">
                 @isset($years)
-                <select name="yearFilterInput" class="form-select" id="yearFilterInput" autocomplete="off" onchange="searchFilter()">
-                    <option selected value="">Seleccione un Año</option>
-                    @foreach( $years as $year )
-                    <option value="{{ $year->year }}">{{ $year->year }}</option>
-                    @endforeach
-                </select>
+                    <select name="yearFilterInput" class="form-select" id="yearFilterInput" autocomplete="off"
+                        onchange="searchFilter()">
+                        <option selected value="">Seleccione un Año</option>
+                        @foreach ($years as $year)
+                            <option value="{{ $year->year }}">{{ $year->year }}</option>
+                        @endforeach
+                    </select>
                 @endisset
             </div>
         </div>
         <div class="col-md-6 col-xl-6">
-            @isset($insertURL)
-            <button id="insertButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" class="btn btn-secondary">Insertar</button>
-            @endisset
+            @if (isset($numRegisters))
+                <button id="insertButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"
+                    class="btn btn-secondary">Insertar</button>
+            @else
+                <button id="insertButton" type="button" class="btn btn-secondary"
+                    onclick="location.href='{{ route($insertURL) }}'">Insertar</button>
+            @endif
         </div>
     </div>
 </div>

@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\PaymentDetail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use Whoops\Run;
 
 class PaymentDetailController extends Controller
 {
@@ -19,7 +18,7 @@ class PaymentDetailController extends Controller
         $users = DB::table('User')->where('boolStatus', '=', '1')->get('id');
         $usersId = [];
 
-        foreach($users as $user => $value) {
+        foreach ($users as $user => $value) {
             array_push($usersId, $value->id);
         }
 
@@ -27,7 +26,7 @@ class PaymentDetailController extends Controller
         $services = DB::table('Service')->get('id');
         $servicesId = [];
 
-        foreach($services as $service => $value) {
+        foreach ($services as $service => $value) {
             array_push($servicesId, $value->id);
         }
 
@@ -41,7 +40,7 @@ class PaymentDetailController extends Controller
             $keys[2] => 'Mes',
             $keys[3] => 'Fecha de Pago',
             $keys[4] => 'Cuota',
-            $keys[5] => 'Estado del Depósito'
+            $keys[5] => 'Estado del Depósito',
         );
 
         // Estableciendo reglas de cada campo respectivamente
@@ -51,7 +50,7 @@ class PaymentDetailController extends Controller
             $keys[2] => ['required', 'numeric', 'min:1', 'max:12'],
             $keys[3] => ['required', 'date'],
             $keys[4] => ['required', 'numeric', 'min:1'],
-            $keys[5] => ['required', 'numeric', 'min:0', 'max:1']
+            $keys[5] => ['required', 'numeric', 'min:0', 'max:1'],
         );
 
         // Si el campo depositDateInput contiene datos
@@ -67,7 +66,7 @@ class PaymentDetailController extends Controller
             'numeric' => 'El campo :attribute es de tipo numerico',
             'date' => 'El campo :attribute es de tipo fecha.',
             'min' => 'El campo :attribute está fuera de rango.',
-            'max' => 'El campo :attribute está fuera de rango.'
+            'max' => 'El campo :attribute está fuera de rango.',
         );
 
         /*
@@ -106,6 +105,8 @@ class PaymentDetailController extends Controller
         $data['insertURL'] = 'CreatePaymentDetail';
         // Numero maximo de registros a la vez
         $data['numRegisters'] = 12;
+        // URL de filterAndButton
+        $data['route'] = "CreatePaymentDetail";
 
         return view('PaymentDetail.historicalTable', $data);
     }

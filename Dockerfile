@@ -8,7 +8,14 @@ RUN docker-php-ext-install pdo
 WORKDIR /app
 COPY . /app
 
-RUN composer install && \
+RUN git clone https://github.com/nodejs/node.git &&\
+    cd node && \
+    ./configure && \
+    make && \
+    sudo make install && \
+    composer install && \
+    npm install && \
+    npm run build && \
     touch .env && \
     echo "APP_KEY=$APP_KEY" >> .env && \
     php artisan key:generate && \

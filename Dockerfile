@@ -1,4 +1,4 @@
-ARG php=8.2-cli
+ARG php=8.2
 ARG node=18
 
 FROM php:${php} as base

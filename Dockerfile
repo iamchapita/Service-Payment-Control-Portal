@@ -5,7 +5,7 @@ FROM php:${php} as base
 
 RUN apt-get update -y && apt-get install -y libmcrypt-dev git openssl zip unzip \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && docker-php-ext-install pdo pdo_mysql
+    && docker-php-ext-install pdo
 
 WORKDIR /app
 COPY . /app

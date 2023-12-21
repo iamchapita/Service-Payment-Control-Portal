@@ -28,10 +28,6 @@ FROM base
 
 COPY --from=node_modules_go_brrr /app/public /var/www/html/public-npm
 
-RUN rsync -ar /var/www/html/public-npm/ /var/www/html/public/ \
-    && rm -rf /var/www/html/public-npm \
-    && chown -R www-data:www-data /var/www/html/public
-
 CMD [ "php", "artisan", "serve", "--host=0.0.0.0", "--port=80" ]
 
 EXPOSE 80

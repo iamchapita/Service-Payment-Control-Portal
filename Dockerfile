@@ -21,7 +21,6 @@ FROM node:${node} as node_modules_go_brrr
 RUN mkdir /app
 RUN mkdir -p  /app
 WORKDIR /app
-COPY . .
 COPY --from=base /var/www/html/vendor /app/vendor
 
 RUN npm install && \

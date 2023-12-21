@@ -1,7 +1,7 @@
-ARG PHP_VERSION=8.2-cli
-ARG NODE_VERSION=18
+ARG php=8.2-cli
+ARG node=18
 
-FROM PHP_VERSION as base
+FROM php as base
 
 RUN apt-get update -y && apt-get install -y libmcrypt-dev git openssl zip unzip
 
@@ -13,7 +13,7 @@ RUN composer install --optimize-autoloader --no-dev && \
     php artisan cache:clear && \
     php artisan config:clear
 
-FROM node:${NODE_VERSION} as node_modules_go_brrr
+FROM node:${node} as node_modules_go_brrr
 
 RUN mkdir /app
 RUN mkdir -p  /app

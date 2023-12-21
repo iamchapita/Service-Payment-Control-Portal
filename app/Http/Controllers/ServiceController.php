@@ -21,8 +21,6 @@ class ServiceController extends Controller
         $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
         $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
 
-        $data['insertURL'] = 'Service';
-
         return view('Service.index', $data);
     }
 

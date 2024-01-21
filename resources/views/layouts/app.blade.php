@@ -17,9 +17,9 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-    <script src="{{asset('js/filter.js')}}"></script>
-    <script src="{{asset('js/checkField.js')}}"></script>
-    <script src="{{asset('js/disableDepositDateInput.js')}}"></script>
+    <script src="{{ asset('js/filter.js') }}"></script>
+    <script src="{{ asset('js/checkField.js') }}"></script>
+    <script src="{{ asset('js/disableDepositDateInput.js') }}"></script>
 </head>
 
 <body>
@@ -27,7 +27,9 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">{{ 'Sistema de Control de Pagos' }}</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -35,53 +37,58 @@
                         <li class="nav-view">
                             <a class="nav-link" href="{{ route('Home') }}">Inicio</a>
                         </li>
-                        @isset( $views )
-                        @foreach ( $views as $view )
-                        @if ( $view == $currentView )
-                        <li class="nav-view">
-                            <a class="nav-link active" aria-currentView="page" href="#">{{ $view }}</a>
-                        </li>
-                        @else
-                        <li class="nav-view">
-                            <a class="nav-link" href="{{ route( $view ) }}">{{ $view }}</a>
-                        </li>
-                        @endif
-                        @endforeach
+                        @isset($views)
+                            @foreach ($views as $view)
+                                @if ($view == $currentView)
+                                    <li class="nav-view">
+                                        <a class="nav-link active" aria-currentView="page"
+                                            href="#">{{ $view }}</a>
+                                    </li>
+                                @else
+                                    <li class="nav-view">
+                                        <a class="nav-link" href="{{ route($view) }}">{{ $view }}</a>
+                                    </li>
+                                @endif
+                            @endforeach
                         @endisset
-                        @isset( $elementsDropdown )
+                        @isset($elementsDropdown)
 
-                        <li class="nav-view dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Detalle de PaymentDetail
-                            </a>
-                            <ul class="dropdown-menu">
+                            <li class="nav-view dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Detalle de PaymentDetail
+                                </a>
+                                <ul class="dropdown-menu">
 
-                                @for ($i=0; $i<3; $i++) <li><a class="dropdown-item" href="{{ route( $elementsDropdownLinks[$i] ) }}">{{ $elementsDropdown[$i] }}</a>
-                        </li>
-                        @endfor
+                                    @for ($i = 0; $i < 4; $i++)
+                                        <li><a class="dropdown-item"
+                                                href="{{ route($elementsDropdownLinks[$i]) }}">{{ $elementsDropdown[$i] }}</a>
+                                        </li>
+                                    @endfor
 
-                    </ul>
-                    </li>
-                    @endisset
-                    @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                    @endif
-                    @else
-                    <li>
-                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-                    </li>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div>
+                                </ul>
+                            </li>
+                        @endisset
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li>
+                                <a class="nav-link" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                            </li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                    </div>
                 @endguest
                 </ul>
             </div>

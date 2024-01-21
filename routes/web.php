@@ -26,8 +26,8 @@ Route::get('/', [UserController::class, 'usersList'])->name('Home');
 Route::get('/Dashboard', function () {
     $data['currentView'] = 'Dashboard';
     $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-    $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
-    $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
+    $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Netflix', 'Historico Disney+');
+    $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'NetflixDetail', 'DisneyDetail');
     return view('dashboard', $data);
 })->middleware('auth')->name('Dashboard');
 

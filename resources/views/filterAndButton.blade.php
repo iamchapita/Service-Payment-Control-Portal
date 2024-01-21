@@ -59,8 +59,10 @@
                 <button id="insertButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button"
                     class="btn btn-secondary">Insertar</button>
             @else
-                <button id="insertButton" type="button" class="btn btn-secondary"
-                    onclick="location.href='{{ route($insertURL) }}'">Insertar</button>
+                @isset($insertURL)
+                    <button id="insertButton" type="button" class="btn btn-secondary"
+                        onclick="location.href='{{ route($insertURL) }}'">Insertar</button>
+                @endisset
             @endif
         </div>
     </div>

@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
 
-    protected function validator(Request $request){
+    protected function validator(Request $request)
+    {
 
         // Estableciendo los nombres personalizados de los atributos
         $attributes = [
@@ -51,8 +52,8 @@ class UserController extends Controller
         $data['values'] = User::all(['id', 'texName', 'boolStatus', 'boolAdminStatus']);
         $data['currentView'] = 'User';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Histórico Spotify', 'Histórico Netflix', 'Histórico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Netflix', 'Historico Disney+');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'NetflixDetail', 'DisneyDetail');
         // URL del formulario
         $data['insertURL'] = 'CreateUser';
 
@@ -76,8 +77,8 @@ class UserController extends Controller
         // Variables para la vista
         $data['currentView'] = 'Create User';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Netflix', 'Historico Disney+');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'NetflixDetail', 'DisneyDetail');
         // URL del formulario
         $data['formURL'] = 'InsertUser';
         $data['title'] = 'Insertar Nuevo Registro en User';
@@ -99,10 +100,9 @@ class UserController extends Controller
         $validator = $this->validator($request);
 
         // Verificando si la validacion es correcta o no
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
-
-        }else{
+        } else {
 
             // Instancia de User para la posterior insecion
             $user = new User();
@@ -121,13 +121,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(int $id){
+    public function edit(int $id)
+    {
 
         // Variables para la vista
         $data['currentView'] = 'Actualizar User';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Netflix', 'Historico Disney+');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'NetflixDetail', 'DisneyDetail');
         // URL del formulario
         $data['formURL'] = 'UpdateUser';
         $data['title'] = 'Actualizar User';
@@ -138,7 +139,6 @@ class UserController extends Controller
         $data['values'] = User::where('id', $id)->get();
 
         return view('User.headerForm', $data);
-
     }
 
 
@@ -154,10 +154,9 @@ class UserController extends Controller
         $validator = $this->validator($request);
 
         // Verificando si la validacion es correcta o no
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
-
-        }else{
+        } else {
 
             // Instancia de User para la posterior actualizacion
             $user = User::find($id);
@@ -169,6 +168,5 @@ class UserController extends Controller
 
             return redirect(route('User'));
         }
-
     }
 }

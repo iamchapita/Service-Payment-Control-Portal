@@ -43,6 +43,7 @@ Route::prefix('/User')->group(function () {
 
 Route::prefix('/PaymentDetail')->group(function () {
     Route::get('/', [PaymentDetailController::class, 'index'])->middleware('auth')->name('PaymentDetail');
+    Route::get('/Spotify3Detail', [PaymentDetailController::class, 'spotify3Detail'])->middleware('auth')->name('Spotify3Detail');
     Route::get('/Spotify2Detail', [PaymentDetailController::class, 'spotify2Detail'])->middleware('auth')->name('Spotify2Detail');
     Route::get('/SpotifyDetail', [PaymentDetailController::class, 'spotifyDetail'])->middleware('auth')->name('SpotifyDetail');
     Route::get('/NetflixyDetail', [PaymentDetailController::class, 'netflixDetail'])->middleware('auth')->name('NetflixDetail');

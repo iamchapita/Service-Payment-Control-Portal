@@ -52,7 +52,6 @@
                             @endforeach
                         @endisset
                         @isset($elementsDropdown)
-
                             <li class="nav-view dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
@@ -60,8 +59,9 @@
                                 </a>
                                 <ul class="dropdown-menu">
 
-                                    @for ($i = 0; $i < 4; $i++)
-                                        <li><a class="dropdown-item"
+                                    @for ($i = 0; $i < 5; $i++)
+                                        <li>
+                                            <a class="dropdown-item"
                                                 href="{{ route($elementsDropdownLinks[$i]) }}">{{ $elementsDropdown[$i] }}</a>
                                         </li>
                                     @endfor

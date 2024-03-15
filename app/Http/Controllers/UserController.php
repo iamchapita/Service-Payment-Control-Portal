@@ -52,8 +52,8 @@ class UserController extends Controller
         $data['values'] = User::all(['id', 'texName', 'boolStatus', 'boolAdminStatus']);
         $data['currentView'] = 'User';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
         // URL del formulario
         $data['insertURL'] = 'CreateUser';
 
@@ -77,8 +77,8 @@ class UserController extends Controller
         // Variables para la vista
         $data['currentView'] = 'Create User';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
         // URL del formulario
         $data['formURL'] = 'InsertUser';
         $data['title'] = 'Insertar Nuevo Registro en User';
@@ -127,8 +127,8 @@ class UserController extends Controller
         // Variables para la vista
         $data['currentView'] = 'Actualizar User';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
         // URL del formulario
         $data['formURL'] = 'UpdateUser';
         $data['title'] = 'Actualizar User';

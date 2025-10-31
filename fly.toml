@@ -1,70 +1,71 @@
-# fly.toml app configuration file generated for spcp-white-morning-2297 on 2023-12-21T08:34:24-06:00
+# fly.toml app configuration file generated for spcp on 2025-10-30T22:07:02-06:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "spcp-white-morning-2297"
-primary_region = "dfw"
-kill_signal = "SIGINT"
-kill_timeout = "5s"
-console_command = "php /var/www/html/artisan tinker"
+app = 'spcp'
+primary_region = 'dfw'
+console_command = 'php /var/www/html/artisan tinker'
 
 [experimental]
   auto_rollback = true
 
 [build]
   [build.args]
-    NODE_VERSION = "18"
-    PHP_VERSION = "8.2"
+    NODE_VERSION = '18'
+    PHP_VERSION = '8.1'
 
 [deploy]
-  release_command = "php /var/www/html/artisan migrate --force"
+  release_command = 'php /var/www/html/artisan migrate --force'
 
 [env]
-  APP_ENV = "production"
-  APP_NAME = "Service Payment Control"
-  DB_CONNECTION = "mysql"
-  DB_DATABASE = "spcpdb"
-  DB_HOST = "dfw.spcpdb.internal"
-  LOG_CHANNEL = "stderr"
-  LOG_LEVEL = "info"
-  LOG_STDERR_FORMATTER = "Monolog\\Formatter\\JsonFormatter"
-  SESSION_DRIVER = "cookie"
-  SESSION_LIFETIME = "120"
-  SESSION_SECURE_COOKIE = "true"
+  APP_ENV = 'production'
+  APP_NAME = 'Service Payment Control'
+  DB_CONNECTION = 'mysql'
+  DB_DATABASE = 'spcpdb'
+  DB_HOST = 'dfw.spcpdb.internal'
+  LOG_CHANNEL = 'stderr'
+  LOG_LEVEL = 'info'
+  LOG_STDERR_FORMATTER = 'Monolog\Formatter\JsonFormatter'
+  PORT = '8080'
+  SERVER_PORT = '8080'
+  SESSION_DRIVER = 'cookie'
+  SESSION_LIFETIME = '120'
+  SESSION_SECURE_COOKIE = 'true'
 
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = true
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
-  processes = ["app"]
+  processes = ['app']
 
 [[services]]
-  protocol = "tcp"
+  protocol = 'tcp'
   internal_port = 8080
-  processes = ["app"]
+  processes = ['app']
 
   [[services.ports]]
     port = 80
-    handlers = ["http"]
+    handlers = ['http']
     force_https = true
 
   [[services.ports]]
     port = 443
-    handlers = ["tls", "http"]
+    handlers = ['tls', 'http']
+
   [services.concurrency]
-    type = "connections"
+    type = 'connections'
     hard_limit = 25
     soft_limit = 20
 
   [[services.tcp_checks]]
-    interval = "15s"
-    timeout = "2s"
-    grace_period = "1s"
+    interval = '15s'
+    timeout = '2s'
+    grace_period = '1s'
 
 [[vm]]
-  cpu_kind = "shared"
+  memory = '1gb'
+  cpu_kind = 'shared'
   cpus = 1
-  memory_mb = 1024

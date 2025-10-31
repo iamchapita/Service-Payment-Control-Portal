@@ -4,7 +4,7 @@
 #
 
 app = "spcp-white-morning-2297"
-primary_region = "mia"
+primary_region = "dfw"
 kill_signal = "SIGINT"
 kill_timeout = "5s"
 console_command = "php /var/www/html/artisan tinker"
@@ -25,7 +25,7 @@ console_command = "php /var/www/html/artisan tinker"
   APP_NAME = "Service Payment Control"
   DB_CONNECTION = "mysql"
   DB_DATABASE = "spcpdb"
-  DB_HOST = "mia.spcpdb.internal"
+  DB_HOST = "dfw.spcpdb.internal"
   LOG_CHANNEL = "stderr"
   LOG_LEVEL = "info"
   LOG_STDERR_FORMATTER = "Monolog\\Formatter\\JsonFormatter"

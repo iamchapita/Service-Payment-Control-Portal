@@ -21,6 +21,7 @@ console_command = 'php /var/www/html/artisan tinker'
 [env]
   APP_ENV = 'production'
   APP_NAME = 'Service Payment Control'
+  APP_PORT = "8080"
   DB_CONNECTION = 'mysql'
   DB_DATABASE = 'spcpdb'
   DB_HOST = 'dfw.spcpdb.internal'
@@ -36,7 +37,7 @@ console_command = 'php /var/www/html/artisan tinker'
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = 'stop'
+  auto_stop_machines = 'suspend'
   auto_start_machines = true
   min_machines_running = 0
   processes = ['app']

@@ -21,6 +21,7 @@ console_command = 'php /var/www/html/artisan tinker'
 [env]
   APP_ENV = 'production'
   APP_NAME = 'Service Payment Control'
+  APP_TIMEZONE = 'America/Tegucigalpa'
   DB_CONNECTION = 'mysql'
   DB_DATABASE = 'spcpdb'
   DB_HOST = 'dfw.spcpdb.internal'

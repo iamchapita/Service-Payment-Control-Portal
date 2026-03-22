@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -32,7 +30,7 @@ class UserController extends Controller
 
         // Estableciendo las reglas de validacion
         $rules = [
-            'texName' => 'required|string|min:4|max:20',
+            'texName' => 'required|string|min:1|max:20',
             'boolStatus' => 'required|numeric|in:0,1',
             'boolAdminStatus' => 'required|numeric|in:0,1',
         ];
@@ -52,8 +50,8 @@ class UserController extends Controller
         $data['values'] = User::all(['id', 'texName', 'boolStatus', 'boolAdminStatus']);
         $data['currentView'] = 'User';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail');
         // URL del formulario
         $data['insertURL'] = 'CreateUser';
 
@@ -77,8 +75,8 @@ class UserController extends Controller
         // Variables para la vista
         $data['currentView'] = 'Create User';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail');
         // URL del formulario
         $data['formURL'] = 'InsertUser';
         $data['title'] = 'Insertar Nuevo Registro en User';
@@ -127,8 +125,8 @@ class UserController extends Controller
         // Variables para la vista
         $data['currentView'] = 'Actualizar User';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail');
         // URL del formulario
         $data['formURL'] = 'UpdateUser';
         $data['title'] = 'Actualizar User';

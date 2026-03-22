@@ -26,8 +26,8 @@ Route::get('/', [UserController::class, 'usersList'])->name('Home');
 Route::get('/Dashboard', function () {
     $data['currentView'] = 'Dashboard';
     $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-    $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
-    $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
+    $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix');
+    $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail');
     return view('dashboard', $data);
 })->middleware('auth')->name('Dashboard');
 
@@ -47,7 +47,6 @@ Route::prefix('/PaymentDetail')->group(function () {
     Route::get('/Spotify2Detail', [PaymentDetailController::class, 'spotify2Detail'])->middleware('auth')->name('Spotify2Detail');
     Route::get('/SpotifyDetail', [PaymentDetailController::class, 'spotifyDetail'])->middleware('auth')->name('SpotifyDetail');
     Route::get('/NetflixyDetail', [PaymentDetailController::class, 'netflixDetail'])->middleware('auth')->name('NetflixDetail');
-    Route::get('/DisneyDetail', [PaymentDetailController::class, 'disneyDetail'])->middleware('auth')->name('DisneyDetail');
     Route::match(['get', 'post'], '/Create', [PaymentDetailController::class, 'create'])->middleware('auth')->name('CreatePaymentDetail');
     Route::match(['get', 'post'], '/UserDetail', [PaymentDetailController::class, 'userDetail'])->name('UserDetail');
     Route::post('/Insert', [PaymentDetailController::class, 'store'])->middleware('auth')->name('InsertPaymentDetail');

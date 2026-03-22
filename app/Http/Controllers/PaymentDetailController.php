@@ -100,8 +100,8 @@ class PaymentDetailController extends Controller
         // Variables para la navbar
         $data['currentView'] = 'PaymentDetail';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail');
         $data['insertURL'] = 'CreatePaymentDetail';
         // Numero maximo de registros a la vez
         $data['numRegisters'] = 12;
@@ -129,8 +129,8 @@ class PaymentDetailController extends Controller
         // Variables para la navbar
         $data['currentView'] = 'Histórico Spotify';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail');
         $data['insertURL'] = 'CreatePaymentDetail';
         // Numero maximo de registros a la vez
         $data['numRegisters'] = 12;
@@ -155,8 +155,8 @@ class PaymentDetailController extends Controller
         // Variables para la navbar
         $data['currentView'] = 'Histórico Spotify 2';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail');
         $data['insertURL'] = 'CreatePaymentDetail';
         // Numero maximo de registros a la vez
         $data['numRegisters'] = 12;
@@ -176,8 +176,8 @@ class PaymentDetailController extends Controller
         // Variables para la navbar
         $data['currentView'] = 'Histórico Spotify 3';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail');
         $data['insertURL'] = 'CreatePaymentDetail';
         // Numero maximo de registros a la vez
         $data['numRegisters'] = 12;
@@ -201,8 +201,8 @@ class PaymentDetailController extends Controller
         // Variables para la navbar
         $data['currentView'] = 'Histórico Netflix';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail');
         $data['insertURL'] = 'CreatePaymentDetail';
         // Numero maximo de registros a la vez
         $data['numRegisters'] = 12;
@@ -226,8 +226,8 @@ class PaymentDetailController extends Controller
         // Variables para la navbar
         $data['currentView'] = 'Histórico Disney+';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail');
         $data['insertURL'] = 'CreatePaymentDetail';
         // Numero maximo de registros a la vez
         $data['numRegisters'] = 12;
@@ -274,8 +274,8 @@ class PaymentDetailController extends Controller
             // Variables para la navbar
             $data['currentView'] = 'Create PaymentDetail';
             $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-            $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
-            $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
+            $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix');
+            $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail');
             $data['formURL'] = 'InsertPaymentDetail';
             $data['title'] = 'Insertar Nuevo Registro en PaymentDetail';
 
@@ -362,8 +362,8 @@ class PaymentDetailController extends Controller
         // Estableciendo variables que se retornaran a la vista
         $data['currentView'] = 'Editar PaymentDetail';
         $data['views'] = array('Dashboard', 'PaymentDetail', 'User', 'Service');
-        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix', 'Historico Disney+');
-        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail', 'DisneyDetail');
+        $data['elementsDropdown'] = array('Historico Spotify', 'Historico Spotify 2', 'Historico Spotify 3', 'Historico Netflix');
+        $data['elementsDropdownLinks'] = array('SpotifyDetail', 'Spotify2Detail', 'Spotify3Detail', 'NetflixDetail');
         $data['title'] = 'Editar Registro en PaymentDetail';
         // Obteniendo la informacion a editar
         $data['values'] = DB::select('SELECT * FROM PaymentDetail WHERE id = ?', [$id]);

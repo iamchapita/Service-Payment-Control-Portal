@@ -32,9 +32,10 @@
                     @foreach ($services as $service)
                         @if (isset($values))
                             <option
-                                @foreach ($values as $value) @if ($value->idServiceFK == $service->id)
-                    selected
-                    @endif @endforeach
+                                @foreach ($values as $value)
+                                    @if ($value->idServiceFK == $service->id)
+                                        selected
+                                    @endif @endforeach
                                 value="{{ $service->id }}">
                                 {{ $service->texName }}
                             </option>
@@ -72,7 +73,11 @@
                 <label class="input-group-text" for="payDateInput{{ $i }}">Fecha de Pago</label>
                 <input type="date" class="date form-control" name="payDateInput{{ $i }}"
                     id="payDateInput{{ $i }}"
-                    @if (isset($values)) @foreach ($values as $value) value={{ $value->datDate }} @endforeach @endif
+                    @if (isset($values)) @foreach ($values as $value)
+                            value={{ $value->datDate }}
+                        @endforeach
+                    @else
+                        value="{{ date('Y-m-d') }}" @endif
                     required autocomplete="off">
             </div>
         </div>
@@ -82,7 +87,7 @@
                 <input type="number" class="form-control" name="moneyAmountInput{{ $i }}"
                     id="moneyAmountInput{{ $i }}"
                     @if (isset($values)) @foreach ($values as $value) value={{ $value->numPaid }} @endforeach @endif
-                    required autocomplete="off">
+                    required>
             </div>
         </div>
         <div class="col-md-6 col-xl-4">
@@ -192,7 +197,11 @@
         <div class="input-group mb-3">
             <label class="input-group-text" for="payDateInput1">Fecha de Pago</label>
             <input type="date" class="date form-control" name="payDateInput1" id="payDateInput1"
-                @if (isset($values)) @foreach ($values as $value) value={{ $value->datDate }} @endforeach @endif
+                @if (isset($values)) @foreach ($values as $value)
+                        value={{ $value->datDate }}
+                    @endforeach
+                @else
+                    value="{{ date('Y-m-d') }}" @endif
                 required autocomplete="off">
         </div>
     </div>
@@ -201,7 +210,7 @@
             <label class="input-group-text" for="moneyAmountInput1">Cuota</label>
             <input type="number" class="form-control" name="moneyAmountInput1" id="moneyAmountInput1"
                 @if (isset($values)) @foreach ($values as $value) value={{ $value->numPaid }} @endforeach @endif
-                required autocomplete="off">
+                required>
         </div>
     </div>
     <div class="col-md-6 col-xl-4">

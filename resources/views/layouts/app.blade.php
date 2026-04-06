@@ -58,14 +58,11 @@
                                     Detalle de PaymentDetail
                                 </a>
                                 <ul class="dropdown-menu">
-
-                                    @for ($i = 0; $i < 3; $i++)
+                                    @foreach($elementsDropdown as $key => $value)
                                         <li>
-                                            <a class="dropdown-item"
-                                                href="{{ route($elementsDropdownLinks[$i]) }}">{{ $elementsDropdown[$i] }}</a>
+                                            <a class="dropdown-item" href="{{ route($elementsDropdownLinks[$key]) }}">{{ $value }}</a>
                                         </li>
-                                    @endfor
-
+                                    @endforeach
                                 </ul>
                             </li>
                         @endisset

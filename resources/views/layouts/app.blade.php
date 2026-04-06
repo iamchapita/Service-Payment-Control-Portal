@@ -59,9 +59,6 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- @foreach($elementsDropdown as $key => $value) -->
-                                        <!-- <li>
-                                            <a class="dropdown-item" href="{{ route($elementsDropdownLinks[$key]) }}">{{ $value }}</a>
-                                        </li> -->
                                         <li>
                                             <a class="dropdown-item" href="{{ route(SpotifyDetail) }}">Historico Spotify</a>
                                         </li>

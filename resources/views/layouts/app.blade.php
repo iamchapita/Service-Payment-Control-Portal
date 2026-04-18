@@ -60,19 +60,19 @@
                             <ul class="dropdown-menu">
 
                                 <li>
-                                    <a class="dropdown-item" href="{{ route(SpotifyDetail) }}">Historico
+                                    <a class="dropdown-item" href="{{ route('SpotifyDetail') }}">Historico
                                         Spotify</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{ route(Spotify2Detail) }}">Historico Spotify
+                                    <a class="dropdown-item" href="{{ route('Spotify2Detail') }}">Historico Spotify
                                         2</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{ route(Spotify3Detail) }}">Historico Spotify
+                                    <a class="dropdown-item" href="{{ route('Spotify3Detail') }}">Historico Spotify
                                         3</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{ route(NetflixDetail) }}">Historico
+                                    <a class="dropdown-item" href="{{ route('NetflixDetail') }}">Historico
                                         Netflix</a>
                                 </li>
 

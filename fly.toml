@@ -16,7 +16,7 @@ console_command = 'php /var/www/html/artisan tinker'
     PHP_VERSION = '8.1'
 
 [deploy]
-  release_command = 'php /var/www/html/artisan optimize:clear'
+  release_command = 'php /var/www/html/artisan view:clear'
 
 [env]
   APP_ENV = 'production'

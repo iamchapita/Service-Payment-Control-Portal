@@ -51,34 +51,34 @@
                                 @endif
                             @endforeach
                         @endisset
-                        {{-- @isset($elementsDropdown)
-                            <li class="nav-view dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Detalle de PaymentDetail
-                                </a>
-                                <ul class="dropdown-menu">
+                        {{-- @isset($elementsDropdown) --}}
+                        <li class="nav-view dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Detalle de PaymentDetail
+                            </a>
+                            <ul class="dropdown-menu">
 
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route(SpotifyDetail) }}">Historico
-                                            Spotify</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route(Spotify2Detail) }}">Historico Spotify
-                                            2</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route(Spotify3Detail) }}">Historico Spotify
-                                            3</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route(NetflixDetail) }}">Historico
-                                            Netflix</a>
-                                    </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route(SpotifyDetail) }}">Historico
+                                        Spotify</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route(Spotify2Detail) }}">Historico Spotify
+                                        2</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route(Spotify3Detail) }}">Historico Spotify
+                                        3</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route(NetflixDetail) }}">Historico
+                                        Netflix</a>
+                                </li>
 
-                                </ul>
-                            </li>
-                        @endisset --}}
+                            </ul>
+                        </li>
+                        {{-- @endisset --}}
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

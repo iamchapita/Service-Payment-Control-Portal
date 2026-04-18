@@ -51,14 +51,14 @@
                                 @endif
                             @endforeach
                         @endisset
-                        @isset($elementsDropdown)
+                        {{-- @isset($elementsDropdown)
                             <li class="nav-view dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Detalle de PaymentDetail
                                 </a>
                                 <ul class="dropdown-menu">
-                                    {{-- @foreach ($elementsDropdown as $key => $value) --}}
+
                                     <li>
                                         <a class="dropdown-item" href="{{ route(SpotifyDetail) }}">Historico
                                             Spotify</a>
@@ -75,10 +75,10 @@
                                         <a class="dropdown-item" href="{{ route(NetflixDetail) }}">Historico
                                             Netflix</a>
                                     </li>
-                                    {{-- @endforeach --}}
+
                                 </ul>
                             </li>
-                        @endisset
+                        @endisset --}}
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

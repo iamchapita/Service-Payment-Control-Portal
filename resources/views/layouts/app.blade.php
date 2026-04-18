@@ -58,20 +58,24 @@
                                     Detalle de PaymentDetail
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <!-- @foreach($elementsDropdown as $key => $value) -->
-                                        <li>
-                                            <a class="dropdown-item" href="{{ route(SpotifyDetail) }}">Historico Spotify</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="{{ route(Spotify2Detail) }}">Historico Spotify 2</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="{{ route(Spotify3Detail) }}">Historico Spotify 3</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="{{ route(NetflixDetail) }}">Historico Netflix</a>
-                                        </li>
-                                    <!-- @endforeach -->
+                                    {{-- @foreach ($elementsDropdown as $key => $value) --}}
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route(SpotifyDetail) }}">Historico
+                                            Spotify</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route(Spotify2Detail) }}">Historico Spotify
+                                            2</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route(Spotify3Detail) }}">Historico Spotify
+                                            3</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route(NetflixDetail) }}">Historico
+                                            Netflix</a>
+                                    </li>
+                                    {{-- @endforeach --}}
                                 </ul>
                             </li>
                         @endisset
